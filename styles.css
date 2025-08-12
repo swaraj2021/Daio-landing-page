@@ -207,169 +207,19 @@ body {
     justify-content: center;
 }
 
-/* Bird Mascot Styles */
-.bird-mascot {
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    z-index: 2;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+/* Make hero image responsive */
+.hero-image {
+    width: 100%;                  /* Take full width of parent container */
+    max-width: clamp(240px, 50vw, 480px); /* Responsive scaling: min 240px, max 480px */
+    height: auto;                  /* Keep aspect ratio */
+    display: block;                /* Removes inline spacing */
+    margin: 0 auto;                 /* Center in its container */
 }
 
-.bird-mascot:hover {
-    transform: scale(1.05);
-}
-
-.bird-mascot:hover .bird-body {
-    animation-play-state: paused;
-}
-
-.bird-body {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    animation: birdFloat 6s ease-in-out infinite;
-    transition: all 0.3s ease;
-}
-
-.bird-head {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80px;
-    height: 60px;
-    background: linear-gradient(135deg, #10b981, #059669);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    border: 3px solid #047857;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-head {
-    background: linear-gradient(135deg, #34d399, #10b981);
-    transform: translateX(-50%) scale(1.1);
-}
-
-.bird-eye {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: #0f172a;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-eye {
-    background: #1e293b;
-    transform: scale(1.2);
-}
-
-.left-eye {
-    top: 15px;
-    left: 15px;
-}
-
-.right-eye {
-    top: 15px;
-    right: 15px;
-}
-
-.eye-reflection {
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 6px;
-    height: 6px;
-    background: #ffffff;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .eye-reflection {
-    background: #fbbf24;
-    transform: scale(1.3);
-}
-
-.bird-beak {
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-top: 16px solid #0f172a;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-beak {
-    border-top-color: #374151;
-    transform: translateX(-50%) scale(1.1);
-}
-
-.bird-crest {
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-bottom: 12px solid #10b981;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-crest {
-    border-bottom-color: #34d399;
-    transform: translateX(-50%) scale(1.2);
-}
-
-.bird-wing {
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    width: 60px;
-    height: 40px;
-    background: linear-gradient(135deg, #059669, #047857);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    border: 2px solid #065f46;
-    transform: rotate(-15deg);
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-wing {
-    background: linear-gradient(135deg, #10b981, #059669);
-    transform: rotate(-10deg) scale(1.1);
-}
-
-.bird-tail {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 20px;
-    background: linear-gradient(135deg, #10b981, #059669);
-    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-    border: 2px solid #047857;
-    transition: all 0.3s ease;
-}
-
-.bird-mascot:hover .bird-tail {
-    background: linear-gradient(135deg, #34d399, #10b981);
-    transform: translateX(-50%) scale(1.1);
-}
-
-@keyframes birdFloat {
-    0%, 100% { 
-        transform: translateY(0px) rotate(0deg); 
-    }
-    50% { 
-        transform: translateY(-15px) rotate(2deg); 
+/* Optional: Adjust size further for very small devices */
+@media (max-width: 480px) {
+    .hero-image {
+        max-width: 80%;            /* Make it smaller on very small screens */
     }
 }
 
