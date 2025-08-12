@@ -1,211 +1,152 @@
-# DAIO Landing Page
+# DAIO - Invest with Purpose, Create Real Impact
 
-A modern, responsive landing page template designed for startups and small businesses. This landing page includes all the essential sections you need to showcase your company, team, and solutions.
+A comprehensive, interactive website showcasing DAIO's revolutionary ESG-integrated investing platform that aligns capital with purpose.
+
+## 🌟 Overview
+
+DAIO offers a guided, end-to-end investing platform that provides institutional-grade strategy, ESG+ integrated intelligence, and real ownership - so your money creates both growth and good.
 
 ## 🚀 Features
 
-- **Responsive Design**: Works perfectly on all devices (desktop, tablet, mobile)
-- **Modern UI/UX**: Clean, professional design with smooth animations
-- **Interactive Elements**: Hover effects, smooth scrolling, and form handling
-- **Contact Forms**: Built-in feedback and contact forms with validation
-- **Team Section**: Showcase your founding team members
-- **Problem/Solution**: Clearly explain what you're solving and how
-- **Professional Styling**: Modern gradients, shadows, and typography
+### Interactive Sections
+- **Hero Section**: Animated portfolio growth visualization with floating elements
+- **Problem Analysis**: Three-layered ESG problem breakdown (Environment, Social, Governance)
+- **Solution Pillars**: Interactive journey mapping and dashboard previews
+- **Market Opportunity**: Interactive charts showing ESG performance and growth
+- **Product Tiers**: Visual product comparison with interactive elements
+- **Roadmap**: Interactive timeline with clickable quarters and status indicators
+- **Go-to-Market Strategy**: Comprehensive strategy breakdown with ARR projections
+- **Moonshot Goal**: Animated Earth-to-Moon visualization
 
-## 📁 File Structure
-
-```
-startup-landing-page/
-├── index.html          # Main HTML file
-├── styles.css          # CSS styling and responsive design
-├── script.js           # JavaScript functionality
-└── README.md           # This file
-```
-
-## 🎨 Customization Guide
-
-### 1. Company Information
-
-Update the following in `index.html`:
-
-- **Company Name**: Replace "DAIO" throughout the file if needed
-- **Tagline**: Update the hero section headline and description
-- **Contact Details**: Update email, phone, location, and business hours
-- **Social Media**: Update social media links in the footer
-
-### 2. Team Section
-
-Customize the team section in `index.html`:
-
-```html
-<div class="team-member">
-    <div class="member-avatar">
-        <i class="fas fa-user"></i> <!-- Replace with actual photo -->
-    </div>
-    <h3>Your Name</h3> <!-- Replace with actual name -->
-    <p class="member-role">Your Role</p> <!-- Replace with actual role -->
-    <p class="member-bio">Your bio description</p> <!-- Replace with actual bio -->
-</div>
-```
-
-**To add team photos**: Replace the `<i class="fas fa-user"></i>` with:
-```html
-<img src="path/to/your/photo.jpg" alt="Your Name" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-```
-
-### 3. Problem & Solution
-
-Update the solution section to reflect your specific:
-
-- **Problem**: What challenges are you solving?
-- **Pain Points**: List the specific issues your customers face
-- **Solution**: How does your product/service address these problems?
-
-### 4. About Section
-
-Modify the three cards in the about section to highlight your company's:
-
-- **Core Values**
-- **Mission**
-- **Unique Strengths**
-
-### 5. Colors & Branding
-
-Update the color scheme in `styles.css`:
-
-```css
-/* Primary brand color */
-:root {
-    --primary-color: #2563eb;    /* Replace with your brand color */
-    --secondary-color: #1d4ed8;  /* Darker shade of primary */
-    --accent-color: #8b5cf6;     /* Accent color for highlights */
-}
-```
-
-### 6. Content Updates
-
-- **Hero Section**: Update the main headline and call-to-action
-- **About Section**: Modify the three feature cards
-- **Contact Information**: Update all contact details
-- **Footer**: Customize links and company description
-
-## 🛠️ Technical Features
-
-### Form Handling
-
-The landing page includes two forms:
-
-1. **Feedback Form**: For general feedback and inquiries
-2. **Contact Form**: For direct contact
-
-**To connect forms to your backend**:
-
-1. Update the form action URLs in `index.html`
-2. Modify the form submission logic in `script.js`
-3. Replace the console.log statements with actual API calls
-
-Example backend integration:
-```javascript
-// Replace the form submission logic
-const response = await fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data)
-});
-```
+### Interactive Charts
+- Portfolio performance tracking
+- ESG vs. S&P 500 performance comparison
+- ESG market growth projections (2020-2030)
+- ARR target projections
+- Interactive world map with regulation points
 
 ### Responsive Design
+- Mobile-first approach
+- Smooth animations and transitions
+- Interactive hover effects
+- Scroll-triggered animations
 
-The page automatically adapts to different screen sizes:
+## 🛠️ Technology Stack
 
-- **Desktop**: Full layout with side-by-side sections
-- **Tablet**: Adjusted spacing and single-column layouts
-- **Mobile**: Mobile-first design with hamburger navigation
+- **HTML5**: Semantic markup with modern structure
+- **CSS3**: Advanced animations, gradients, and responsive design
+- **JavaScript**: Interactive charts (Chart.js), animations, and user interactions
+- **Chart.js**: Professional data visualization
+- **Font Awesome**: Icon library for enhanced UI
+- **Google Fonts**: Inter font family for modern typography
 
-### Animations
+## 📱 Sections Breakdown
 
-- **Scroll Animations**: Elements fade in as you scroll
-- **Hover Effects**: Interactive cards and buttons
-- **Smooth Scrolling**: Navigation links scroll smoothly to sections
-- **Loading States**: Form submission feedback
+### 1. Hero Section
+- Company tagline and mission statement
+- Animated floating shapes
+- Interactive portfolio chart
+- Call-to-action buttons
 
-## 🚀 Deployment
+### 2. Problem Section
+- **Environment Layer**: Transparency void, ESG scoring issues, CO₂ visibility
+- **Social Layer**: Access barriers, exclusion from financial growth
+- **Governance Layer**: Ownership traps, voting rights issues
+- Interactive summary cards with ideal vs. reality comparison
 
-### Local Development
+### 3. Solution Section
+- **Access Pillar**: $50 minimum investment platform with user journey mapping
+- **Impact Pillar**: ESG integration with live CO₂ portfolio indicators
+- **Participate Pillar**: DAO ownership and voting portal
 
-1. Open the project folder in your code editor
-2. Open `index.html` in your web browser
-3. Make changes and refresh to see updates
+### 4. Market Opportunity
+- ESG outperformance charts
+- Market growth projections
+- Global regulation mapping with interactive points
 
-### Web Hosting
+### 5. Product Offer
+- Free tier: Asset allocation and recommendations
+- Standard tier: Portfolio management with 0.2% fees
+- Premium tier: Managed funds with additional services
+- Interactive market positioning quadrant
 
-1. **Upload files** to your web hosting provider
-2. **Ensure all files** are in the same directory
-3. **Test the forms** to ensure they work correctly
+### 6. Roadmap
+- Interactive timeline from Q1 2025 to Q3 2026
+- Stage progression tracking
+- Resource needs and team size projections
+- Color-coded status indicators
 
-### Recommended Hosting Options
+### 7. Go-to-Market Strategy
+- Target audience segmentation
+- Market penetration timeline
+- Channel breakdown
+- ARR projections with interactive charts
 
-- **Netlify**: Free hosting with form handling
-- **Vercel**: Fast deployment and hosting
-- **GitHub Pages**: Free hosting for public repositories
-- **Traditional hosting**: Upload via FTP/SFTP
+### 8. Moonshot Goal
+- 1 Gigaton CO2e reduction target
+- Animated Earth-to-Moon visualization
+- School bus chain animation
+
+## 🎨 Design Features
+
+- **Color Scheme**: Professional greens and blues with strategic accent colors
+- **Typography**: Modern Inter font family with proper hierarchy
+- **Animations**: Smooth scroll animations, hover effects, and micro-interactions
+- **Layout**: Grid-based responsive design with proper spacing
+- **Visual Elements**: Interactive charts, animated shapes, and engaging graphics
+
+## 📊 Interactive Elements
+
+- **Clickable Journey Steps**: Interactive user investment journey
+- **Regulation Points**: Clickable world map with ESG regulation details
+- **Company Positioning**: Interactive market positioning chart
+- **Timeline Navigation**: Clickable quarters with visual feedback
+- **Roadmap Items**: Interactive status toggles and information display
+
+## 🚀 Getting Started
+
+1. Clone the repository
+2. Open `index.html` in a modern web browser
+3. Navigate through the interactive sections
+4. Click on interactive elements to explore functionality
 
 ## 📱 Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers (iOS Safari, Chrome Mobile)
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
+- Mobile browsers (responsive design)
 
-## 🔧 Customization Tips
+## 🔧 Customization
 
-### Adding New Sections
+The website is built with modular components that can be easily customized:
+- Update chart data in the JavaScript file
+- Modify colors and styles in the CSS file
+- Add new sections by following the existing HTML structure
+- Customize animations and interactions
 
-1. Copy an existing section structure
-2. Update the content and styling
-3. Add navigation links if needed
-4. Update the CSS for responsive design
+## 📈 Performance Features
 
-### Changing Icons
+- Lazy loading of charts
+- Optimized animations
+- Responsive image handling
+- Efficient CSS animations
+- Smooth scrolling and navigation
 
-The page uses Font Awesome icons. To change icons:
+## 🌍 ESG Focus
 
-1. Visit [Font Awesome](https://fontawesome.com/icons)
-2. Find your desired icon
-3. Replace the icon class in the HTML
+The website emphasizes DAIO's commitment to:
+- Environmental impact tracking
+- Social responsibility in investing
+- Governance transparency
+- Sustainable growth
+- Real ownership and voting rights
 
-### Adding Images
+## 📞 Contact
 
-1. Place images in an `images/` folder
-2. Update image paths in the HTML
-3. Ensure images are optimized for web (compressed, appropriate dimensions)
-
-## 📞 Support
-
-For customization help or questions:
-
-1. Check the code comments for guidance
-2. Review the CSS classes for styling options
-3. Test changes in different browsers
-4. Validate HTML and CSS for errors
-
-## 📄 License
-
-This template is free to use and modify for your startup. Please ensure you have the rights to any images or content you add.
-
-## 🎯 Next Steps
-
-After customizing your landing page:
-
-1. **Add Analytics**: Google Analytics, Mixpanel, etc.
-2. **SEO Optimization**: Meta tags, structured data, sitemap
-3. **Performance**: Optimize images, minify CSS/JS
-4. **Testing**: Test on different devices and browsers
-5. **Launch**: Deploy and share your new landing page!
+Ready to be part of the future of impact investing? Get in touch through the contact form on the website.
 
 ---
 
-**Good luck with your startup! 🚀**
+**DAIO** - Investing in the future, one impact at a time. Patentable technology.

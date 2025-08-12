@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAIO - Making Real Impact</title>
+    <title>DAIO - Invest with Purpose, Create Real Impact</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -17,9 +18,11 @@
             </div>
             <ul class="nav-menu">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#problem">Problem</a></li>
                 <li><a href="#solution">Solution</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#market">Market</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -33,175 +36,691 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <div class="hero-visual">
-                <div class="hero-illustration">
-                    <i class="fas fa-rocket"></i>
-                </div>
-            </div>
             <div class="hero-content">
                 <h1>DAIO</h1>
-                <p class="hero-tagline">Invest with clarity - and real impact</p>
+                <p class="hero-tagline">We offer a guided, end-to-end investing platform that aligns capital with purpose - offering institutional-grade strategy, ESG+ integrated intelligence, and real ownership - so your money creates both growth and good.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Get Early Access</a>
-                    <a href="#contact" class="btn btn-secondary">I'm a Partner</a>
+                    <a href="#contact" class="btn btn-secondary">Partner with Us</a>
                 </div>
-                
-                <!-- Impact Metrics Section -->
-                <div class="impact-section">
-                    <h3>Our Impact Dashboard</h3>
-                    <div class="impact-grid">
-                        <div class="impact-card">
-                            <div class="impact-icon">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <div class="impact-value">150+</div>
-                            <div class="impact-label">Happy Customers</div>
-                        </div>
-                        <div class="impact-card">
-                            <div class="impact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="impact-value">80%</div>
-                            <div class="impact-label">Time Saved</div>
-                        </div>
-                        <div class="impact-card">
-                            <div class="impact-icon">
-                                <i class="fas fa-check-circle"></i>
-                            </div>
-                            <div class="impact-value">Yes</div>
-                            <div class="impact-label">Problem Solved</div>
-                        </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-illustration">
+                    <div class="floating-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
                     </div>
-                    <p class="impact-note">Active solutions delivering real results</p>
+                    <div class="hero-chart">
+                        <canvas id="heroChart"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <!-- Problem Section -->
+    <section id="problem" class="problem">
         <div class="container">
             <div class="section-header">
-                <h2>What We're Building</h2>
-                <p>We're passionate about innovation and committed to making a real impact</p>
+                <h2>The Problem is Layered, Chronological, and Solvable</h2>
+                <p>Three interconnected problem areas affecting individual investors globally</p>
             </div>
-            <div class="about-grid">
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-lightbulb"></i>
+            
+            <div class="problem-layers">
+                <div class="layer environment">
+                    <div class="layer-header">
+                        <h3>Environment</h3>
+                        <span class="layer-subtitle">Environmental Layer</span>
                     </div>
-                    <h3>Innovation</h3>
-                    <p>We're constantly pushing boundaries and exploring new technologies to create breakthrough solutions.</p>
+                    <div class="layer-content">
+                        <h4>Transparency Void</h4>
+                        <ul>
+                            <li>Even with access + ownership, there's no visibility</li>
+                            <li>ESG scores are vague and untrusted</li>
+                            <li>CO₂ Scope 1-4, lifecycle data mostly invisible</li>
+                            <li>Zero link between capital & climate outcome</li>
+                        </ul>
+                        <div class="impact-statement">
+                            <strong>Impact:</strong> Financial markets are disconnected from planetary reality.
+                        </div>
+                        <div class="supporting-data">
+                            $3-5T/year private capital needed to bridge the gap. (Merkel, Kerry, WEF)
+                        </div>
+                    </div>
                 </div>
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
+
+                <div class="layer social">
+                    <div class="layer-header">
+                        <h3>Social</h3>
+                        <span class="layer-subtitle">Client Layer</span>
                     </div>
-                    <h3>User-Centric</h3>
-                    <p>Every decision we make is driven by user needs and feedback, ensuring we build products that truly matter.</p>
+                    <div class="layer-content">
+                        <h4>Access Barrier</h4>
+                        <ul>
+                            <li>Investors with $50-$5,000 are excluded from real financial growth</li>
+                            <li>No affordable advisor</li>
+                            <li>No trustworthy, guided experience (clients left to DIY)</li>
+                            <li>Excluded from capitalism - excluded from impact (but want impact)</li>
+                        </ul>
+                        <div class="impact-statement">
+                            <strong>Impact:</strong> This amplifies generational inequality and wealth lock-out.
+                        </div>
+                        <div class="supporting-data">
+                            -35% of global retail capital is passive and disempowered. (Bain & Co.)
+                        </div>
+                    </div>
                 </div>
-                <div class="about-card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
+
+                <div class="layer governance">
+                    <div class="layer-header">
+                        <h3>Governance</h3>
+                        <span class="layer-subtitle">Institutional Layer</span>
                     </div>
-                    <h3>Growth</h3>
-                    <p>We're focused on sustainable growth and scaling our impact to reach more people worldwide.</p>
+                    <div class="layer-content">
+                        <h4>Ownership Trap</h4>
+                        <ul>
+                            <li>Gaining access still leads to disempowerment</li>
+                            <li>ETFs strip voting rights</li>
+                            <li>Advisors charge 5x fees</li>
+                            <li>DIY/Other Platforms hide incentives (e.g. PFOF)</li>
+                        </ul>
+                        <div class="impact-statement">
+                            <strong>Impact:</strong> Retail investors lose control and agency.
+                        </div>
+                        <div class="supporting-data">
+                            83% want proxy votes, but can't exercise them. (Stanford)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="problem-summary">
+                <div class="summary-card">
+                    <h3>In an ideal world...</h3>
+                    <div class="summary-content">
+                        <div class="summary-left">
+                            <p>The things we spend our money on <strong>grow and materialize.</strong></p>
+                        </div>
+                        <div class="summary-right">
+                            <p>The companies we give our money to <strong>construct the reality we inhabit.</strong></p>
+                        </div>
+                    </div>
+                    <div class="reality-check">
+                        <p>But in reality the majority of <strong>individual investors,</strong> (who amount to about <strong>35% of $135T global democratic investment market</strong>) are <strong>deprived</strong> of their choice to vote on activities of companies they invest in.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Problem & Solution Section -->
+    <!-- Solution Section -->
     <section id="solution" class="solution">
         <div class="container">
-            <div class="solution-content">
-                <div class="solution-text">
-                    <h2>The Problem We're Solving</h2>
-                    <p>In today's rapidly evolving world, businesses and individuals face unprecedented challenges that traditional solutions can't address. We've identified key pain points that are holding back progress and innovation.</p>
-                    <ul class="problem-list">
-                        <li><i class="fas fa-check"></i> Complex workflows that waste time and resources</li>
-                        <li><i class="fas fa-check"></i> Lack of integration between essential tools</li>
-                        <li><i class="fas fa-check"></i> Inefficient decision-making processes</li>
-                        <li><i class="fas fa-check"></i> Limited access to real-time insights</li>
+            <div class="section-header">
+                <h2>DAIO (MVP) Core Innovation Pillars</h2>
+                <p>Three revolutionary pillars that solve the layered problems</p>
+            </div>
+
+            <div class="solution-pillars">
+                <div class="pillar access">
+                    <div class="pillar-header">
+                        <h3>Access</h3>
+                        <p>End-to-end guided investing platform for $50 minimum investment</p>
+                    </div>
+                    <div class="pillar-features">
+                        <ul>
+                            <li>crypto, stocks, bonds, gold, etc in one place</li>
+                            <li>financial advisor level advice (robo) and customization</li>
+                            <li>portfolio recommendations and auto-rebalancing</li>
+                            <li>5 times cheaper than an ETF!</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-visual">
+                        <div class="user-journey">
+                            <h4>DAIO cyclical user investment journey</h4>
+                            <div class="journey-circle">
+                                <div class="journey-step" data-step="1">Asset Allocation</div>
+                                <div class="journey-step" data-step="2">Recommended Portfolio</div>
+                                <div class="journey-step" data-step="3">Allocation</div>
+                                <div class="journey-step" data-step="4">Dashboard</div>
+                                <div class="journey-step" data-step="5">Achievements & Voting</div>
+                                <div class="journey-step" data-step="6">Hidden Risk Tolerance & Preference Survey</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar impact">
+                    <div class="pillar-header">
+                        <h3>Impact</h3>
+                        <p>ESG-Integrated Decision-Making & Tracking including a LIVE CO2 Portfolio Indicator ©¹</p>
+                    </div>
+                    <div class="pillar-features">
+                        <ul>
+                            <li>Increase market transparency nearly 90%</li>
+                            <li>Scope 1-3 highly integrated</li>
+                            <li>Scope 4 emissions (WIP - product lifecycle)</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-visual">
+                        <div class="dashboard-preview">
+                            <div class="dashboard-card portfolio-overview">
+                                <h4>Portfolio Overview</h4>
+                                <canvas id="portfolioChart"></canvas>
+                                <div class="dashboard-metrics">
+                                    <div class="metric">
+                                        <span class="label">ESG Score:</span>
+                                        <span class="value">7.0</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="label">Daily CO2 Impact:</span>
+                                        <span class="value">635.29 kg/day</span>
+                                        <span class="trend positive">50% lower than average</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pillar participate">
+                    <div class="pillar-header">
+                        <h3>Participate</h3>
+                        <p>DAO ownership via a Voting Portal ©¹</p>
+                    </div>
+                    <div class="pillar-features">
+                        <ul>
+                            <li>Tokens received for investing</li>
+                            <li>Each token grants ownership and DAIO voting</li>
+                            <li>*only acquirable by DAIO investors, and subject to halving (anti-inflation measures - similar to BTC)</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-visual">
+                        <div class="governance-portal">
+                            <h4>Impact Community</h4>
+                            <div class="portal-content">
+                                <p>Shape the future of both your investments and DAIO governance. Discuss, vote, and propose new initiatives and governance proposals. Your tokens, your voice.</p>
+                                <button class="btn btn-primary">Create Voting Portal</button>
+                                <div class="portal-metrics">
+                                    <div class="metric">
+                                        <span class="label">Active Voters:</span>
+                                        <span class="value">11</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="label">Community Members:</span>
+                                        <span class="value">3,547</span>
+                                    </div>
+                                    <div class="metric">
+                                        <span class="label">Participation Rate:</span>
+                                        <span class="value">75.4%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Opportunity Section -->
+    <section id="market" class="market">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Now: An Untapped Market Opportunity</h2>
+                <p>ESG investing is growing rapidly with strong performance and regulatory support</p>
+            </div>
+
+            <div class="market-opportunities">
+                <div class="opportunity-card">
+                    <h3>ESG Outperformance</h3>
+                    <p>ESG funds often outperform by ~1-2% annually*</p>
+                    <div class="chart-container">
+                        <canvas id="esgPerformanceChart"></canvas>
+                    </div>
+                    <p class="source">Source: S&P Dow Jones, Morgan Stanley</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h3>ESG Market Growth</h3>
+                    <p>ESG investing will grow 18.8% through 2030 (CAGR)</p>
+                    <div class="chart-container">
+                        <canvas id="esgGrowthChart"></canvas>
+                    </div>
+                    <p class="source">Source: Grand View Research</p>
+                </div>
+
+                <div class="opportunity-card">
+                    <h3>Increasing ESG Regulations</h3>
+                    <p>ESG transparency is driven by government reporting mandates</p>
+                    <div class="regulations-map">
+                        <div class="map-container">
+                            <div class="world-map">
+                                <div class="regulation-point" style="top: 20%; left: 30%;" data-regulation="EU Taxonomy"></div>
+                                <div class="regulation-point" style="top: 25%; left: 25%;" data-regulation="SFDR"></div>
+                                <div class="regulation-point" style="top: 30%; left: 35%;" data-regulation="CSRD"></div>
+                                <div class="regulation-point" style="top: 40%; left: 20%;" data-regulation="TCFD"></div>
+                                <div class="regulation-point" style="top: 45%; left: 15%;" data-regulation="ISSB"></div>
+                                <div class="regulation-point" style="top: 35%; left: 10%;" data-regulation="SEC Climate Disclosure"></div>
+                                <div class="regulation-point" style="top: 50%; left: 80%;" data-regulation="GRI"></div>
+                                <div class="regulation-point" style="top: 55%; left: 85%;" data-regulation="SASB"></div>
+                                <div class="regulation-point" style="top: 60%; left: 90%;" data-regulation="CDP"></div>
+                                <div class="regulation-point" style="top: 65%; left: 88%;" data-regulation="UN PRI"></div>
+                                <div class="regulation-point" style="top: 70%; left: 85%;" data-regulation="Modern Slavery Act"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="source">Source: Dun & Bradstreet</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section id="product" class="product">
+        <div class="container">
+            <div class="section-header">
+                <h2>Product Offer</h2>
+                <p>We provide an investing service, plus actionable information</p>
+            </div>
+
+            <div class="product-tiers">
+                <div class="tier free">
+                    <div class="tier-header">
+                        <h3>Free</h3>
+                    </div>
+                    <div class="tier-features">
+                        <ul>
+                            <li>Asset Allocation, Recommended Portfolio</li>
+                            <li>No fee is collected for getting client risk tolerance & preference survey and portfolio recommendations</li>
+                        </ul>
+                    </div>
+                    <div class="tier-buttons">
+                        <button class="btn btn-outline">AA</button>
+                        <button class="btn btn-outline">RP</button>
+                    </div>
+                </div>
+
+                <div class="tier standard">
+                    <div class="tier-header">
+                        <h3>Standard</h3>
+                    </div>
+                    <div class="tier-features">
+                        <ul>
+                            <li>Portfolio Implementation & Management</li>
+                            <li>Insanely cheap management fee (1/2 of ETF), .2%</li>
+                            <li>Billed monthly and on deposit (for portfolio management, auto rebalancing)</li>
+                        </ul>
+                    </div>
+                    <div class="tier-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-chart-pie"></i>
+                            Portfolio
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tier premium">
+                    <div class="tier-header">
+                        <h3>Premium</h3>
+                    </div>
+                    <div class="tier-features">
+                        <ul>
+                            <li>Managed Funds</li>
+                            <li>(In-House Mission Funds - requiring additional human and computing resources)</li>
+                            <li>$4.99/mo or AUM-based (TBC)</li>
+                        </ul>
+                    </div>
+                    <div class="tier-buttons">
+                        <div class="cube-icon">
+                            <i class="fas fa-cube"></i>
+                            <span>Managed Funds</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="market-positioning">
+                <h3>Market Positioning</h3>
+                <div class="positioning-chart">
+                    <div class="chart-axes">
+                        <div class="y-axis">
+                            <span>Expensive</span>
+                            <span>Free</span>
+                        </div>
+                        <div class="x-axis">
+                            <span>DIY</span>
+                            <span>Guided</span>
+                        </div>
+                    </div>
+                    <div class="quadrants">
+                        <div class="quadrant q1">
+                            <div class="company financial-advisor">
+                                <span>Financial Advisor</span>
+                                <div class="asset-types">
+                                    <span>Portfolio</span>
+                                    <span>ETF</span>
+                                    <span>AA</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quadrant q2">
+                                                    <div class="company daio">
+                            <span>DAIO</span>
+                            <div class="asset-types">
+                                <span>AA</span>
+                                <span>Managed Funds</span>
+                                <span>Portfolio</span>
+                                <span>Crypto</span>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="quadrant q3">
+                            <div class="company etoro">
+                                <span>eToro</span>
+                                <div class="asset-types">
+                                    <span>ETF</span>
+                                </div>
+                            </div>
+                            <div class="company scalable">
+                                <span>Scalable</span>
+                                <div class="asset-types">
+                                    <span>ETF</span>
+                                </div>
+                            </div>
+                            <div class="company robinhood">
+                                <span>Robinhood</span>
+                                <div class="asset-types">
+                                    <span>ETF</span>
+                                </div>
+                            </div>
+                            <div class="company trade-republic">
+                                <span>Trade Republic</span>
+                                <div class="asset-types">
+                                    <span>ETF</span>
+                                </div>
+                            </div>
+                            <div class="company betterment">
+                                <span>Betterment</span>
+                                <div class="asset-types">
+                                    <span>ETF</span>
+                                </div>
+                            </div>
+                            <div class="company coinbase">
+                                <span>Coinbase</span>
+                                <div class="asset-types">
+                                    <span>Crypto</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="positioning-note">
+                    <p><strong>Note:</strong> "invisible cost" purchase price risk¹ applies to platforms like Robinhood and Trade Republic</p>
+                    <p class="footnote">¹ Payment For Order Flow (PFOF) is illegal in the United Kingdom, Germany, France, Canada, Italy, Spain, Netherlands, Belgium, Sweden, Denmark, and other countries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-header">
+                <h2>Roadmap and Needs</h2>
+                <p>Strategic plan from Q1 2025 to Q3 2026</p>
+            </div>
+
+            <div class="roadmap-container">
+                <div class="timeline">
+                    <div class="timeline-header">
+                        <span>Monthly cash burn rate</span>
+                    </div>
+                    <div class="timeline-quarters">
+                        <div class="quarter q1-2025">Q1</div>
+                        <div class="quarter q2-2025">Q2</div>
+                        <div class="quarter q3-2025">Q3</div>
+                        <div class="quarter q4-2025">Q4</div>
+                        <div class="quarter q1-2026">Q1</div>
+                        <div class="quarter q2-2026">Q2</div>
+                        <div class="quarter q3-2026">Q3</div>
+                    </div>
+                    <div class="timeline-marker">
+                        <span>today</span>
+                    </div>
+                </div>
+
+                <div class="roadmap-details">
+                    <div class="detail-row">
+                        <div class="row-header">Stage</div>
+                        <div class="stage-item complete">Bootstrap / pre-money</div>
+                        <div class="stage-item wip">accelerator / angel</div>
+                        <div class="stage-item wip">pre-seed</div>
+                        <div class="stage-item future">seed</div>
+                        <div class="stage-item future">series</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="row-header">Use of funds</div>
+                        <div class="funds-item complete">Preliminary Team mvp.01-03</div>
+                        <div class="funds-item wip">Optional: Incorporation / mvp.1 / GTM</div>
+                        <div class="funds-item wip">First €1 in revenue @beachhead market</div>
+                        <div class="funds-item future">€10k, €100k, €1M Pan-EU Launch</div>
+                        <div class="funds-item future">€10M, €100M, €1B in revenue</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="row-header">Resource Needs</div>
+                        <div class="resource-item complete">€2k - tech, travel, meals<br>€60k - Carbon13 Fee + VAT</div>
+                        <div class="resource-item wip">€75K-200K</div>
+                        <div class="resource-item wip">€500k-1M</div>
+                        <div class="resource-item future">TBC</div>
+                        <div class="resource-item future">TBC</div>
+                    </div>
+
+                    <div class="detail-row">
+                        <div class="row-header">Team Size</div>
+                        <div class="team-size">
+                            <div class="size-item complete">
+                                <span class="size-number">2</span>
+                                <span class="size-label">CoFounders</span>
+                            </div>
+                            <div class="size-item complete">
+                                <span class="size-number">3</span>
+                                <span class="size-label">Fractional CoFounder</span>
+                            </div>
+                            <div class="size-item wip">
+                                <span class="size-number">4</span>
+                                <span class="size-label">AI Intern</span>
+                            </div>
+                            <div class="size-item wip">
+                                <span class="size-number">7</span>
+                                <span class="size-label">Incorporate with 5 CoFounders (3 fractional) + First hire Directors</span>
+                            </div>
+                            <div class="size-item future">
+                                <span class="size-number">9</span>
+                                <span class="size-label">Director expansion</span>
+                            </div>
+                            <div class="size-item future">
+                                <span class="size-number">11</span>
+                                <span class="size-label"></span>
+                            </div>
+                            <div class="size-item future">
+                                <span class="size-number">13</span>
+                                <span class="size-label">Seed/series human-team size</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="legend">
+                    <div class="legend-item">
+                        <span class="legend-color complete"></span>
+                        <span>Complete</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color wip"></span>
+                        <span>WIP</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color future"></span>
+                        <span>Future Planning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Go-to-Market Strategy Section -->
+    <section id="gtm" class="gtm">
+        <div class="container">
+            <div class="section-header">
+                <h2>Main Points of Go-to-Market Strategy</h2>
+                <p>Strategic approach to market entry and growth</p>
+            </div>
+
+            <div class="gtm-content">
+                <div class="gtm-left">
+                    <div class="gtm-goal">
+                        <h3>Main Goal</h3>
+                        <p>The goal is gain awareness and procure the unsatisfied DIY investors from the investments app with viral growth strategies.</p>
+                    </div>
+
+                    <div class="gtm-target">
+                        <h3>Target Audience</h3>
+                        <div class="target-segments">
+                            <div class="segment primary">
+                                <h4>Primarily TA segments:</h4>
+                                <p>Gen Z and millennial (25-40 y.o) and Gen X (40-50 y.o) DIY investors who lost money or didn't earn as much as desired on competitor investment apps. This audience is identified as most likely to try new investment apps like "DAIO" and become early adopters. The target market is the US, specifically cities and suburbs.</p>
+                            </div>
+                            <div class="segment secondary">
+                                <h4>Secondarily:</h4>
+                                <p>25-50 y.o with no experience in investing.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gtm-penetration">
+                        <h3>Early Stage Market Penetration</h3>
+                        <p>Target of 0.5% to 3% of 21 million people (Serviceable Obtainable Market - SOM), which translates to 105,000 to 630,000 people, within 0-3 years.</p>
+                    </div>
+
+                    <div class="gtm-timeline">
+                        <h3>Early Market Penetration Timeline</h3>
+                        <div class="timeline-phases">
+                            <div class="phase">
+                                <h4>1. Launch & Initial Adoption (0-6 months):</h4>
+                                <p><strong>Activities:</strong> Beta testing, early user acquisition, heavy marketing (referrals, influencers, partnerships).</p>
+                                <p><strong>Goal:</strong> Reach 0.5%-1% penetration.</p>
+                            </div>
+                            <div class="phase">
+                                <h4>2. Growth & Validation (6-18 months):</h4>
+                                <p><strong>Activities:</strong> Scaling user base, refining product-market fit, adjusting pricing, improving UX, handling compliance.</p>
+                                <p><strong>Goal:</strong> Reach 1%-3% penetration.</p>
+                            </div>
+                            <div class="phase">
+                                <h4>3. Transition to Scaling (18-36 months):</h4>
+                                <p><strong>Activities:</strong> Brand awareness increases, organic adoption grows, expansion beyond early adopters.</p>
+                                <p><strong>Goal:</strong> Exceed 3% penetration and move into the scaling phase.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gtm-channels">
+                        <h3>Channels</h3>
+                        <div class="channel-breakdown">
+                            <div class="channel">
+                                <span class="percentage">50%</span>
+                                <span class="channel-name">Social media - owned and borrowed KOLs</span>
+                            </div>
+                            <div class="channel">
+                                <span class="percentage">30%</span>
+                                <span class="channel-name">OOH (Out-of-Home)</span>
+                            </div>
+                            <div class="channel">
+                                <span class="percentage">20%</span>
+                                <span class="channel-name">PR + events</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gtm-right">
+                    <div class="arr-projection">
+                        <h3>ARR Target Projection</h3>
+                        <div class="chart-container">
+                            <canvas id="arrChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="capital-gains">
+                        <h3>+ Capital Gains</h3>
+                        <ul>
+                            <li>Portfolio growth (Incl. Voting rights)</li>
+                            <li>Impact Tokens (Carbon Credits)</li>
+                            <li>Redwood tokens/shares (COOP Ownership)</li>
+                        </ul>
+                    </div>
+
+                    <div class="revenue-streams">
+                        <h3>Revenue Streams</h3>
+                        <ul>
+                            <li>Standard management fee of .1% (billed monthly)</li>
+                            <li>Premium monthly subscription $4.99 (15% of users opt for premium services)</li>
+                            <li>Total Revenue</li>
+                        </ul>
+                    </div>
+
+                    <div class="assumptions">
+                        <h3>Assumptions</h3>
+                        <ul>
+                            <li><strong>SOM:</strong> 21 Million users</li>
+                            <li><strong>Adoption (Capture) Rates:</strong> 1%, 5%, 10%, 20%</li>
+                            <li><strong>Organic growth in investments:</strong> 5%</li>
+                            <li><strong>Average investment amount:</strong> $1000</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Moonshot Goal Section -->
+    <section id="moonshot" class="moonshot">
+        <div class="container">
+            <div class="moonshot-content">
+                <div class="moonshot-text">
+                    <h2>DAIO Moonshot Goal</h2>
+                    <ul>
+                        <li>DAIO aims to <strong>reduce 1 Gigaton</strong> of CO2e by investing in great companies</li>
+                        <li><strong>1Gt is equivalent to 24 Million+ school busses removed</strong> from the roads</li>
+                        <li>If you stacked those buses end to end, they <strong>would reach the moon.</strong></li>
                     </ul>
                 </div>
-                <div class="solution-visual">
-                    <div class="solution-placeholder">
-                        <i class="fas fa-puzzle-piece"></i>
+                <div class="moonshot-visual">
+                    <div class="earth-moon-journey">
+                        <div class="earth">
+                            <div class="earth-glow"></div>
+                        </div>
+                        <div class="bus-chain">
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                            <div class="bus"></div>
+                        </div>
+                        <div class="moon">
+                            <div class="moon-glow"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team" class="team">
-        <div class="container">
-            <div class="section-header">
-                <h2>Meet Our Team</h2>
-                <p>Three passionate founders with a shared vision for the future</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Founder 1</h3>
-                    <p class="member-role">CEO & Visionary</p>
-                    <p class="member-bio">Leading our strategic vision and driving innovation across all aspects of our business.</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Founder 2</h3>
-                    <p class="member-role">CTO & Architect</p>
-                    <p class="member-bio">Building robust technical foundations and ensuring our solutions are scalable and secure.</p>
-                </div>
-                <div class="team-member">
-                    <div class="member-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <h3>Founder 3</h3>
-                    <p class="member-role">COO & Growth</p>
-                    <p class="member-bio">Optimizing operations and driving sustainable growth strategies for our company.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Feedback Section -->
-    <section id="feedback" class="feedback">
-        <div class="container">
-            <div class="section-header">
-                <h2>Share Your Feedback</h2>
-                <p>We'd love to hear from you! Your insights help us improve and build better solutions.</p>
-            </div>
-            <form class="feedback-form" id="feedbackForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="feedback-type">Feedback Type</label>
-                    <select id="feedback-type" name="feedback-type" required>
-                        <option value="">Select feedback type</option>
-                        <option value="general">General Feedback</option>
-                        <option value="bug">Bug Report</option>
-                        <option value="feature">Feature Request</option>
-                        <option value="partnership">Partnership Inquiry</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" required placeholder="Tell us what's on your mind..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit Feedback</button>
-            </form>
         </div>
     </section>
 
@@ -210,7 +729,7 @@
         <div class="container">
             <div class="section-header">
                 <h2>Get in Touch</h2>
-                <p>Ready to collaborate? Let's start a conversation about how we can work together.</p>
+                <p>Ready to be part of the future of impact investing? Let's start a conversation.</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -225,29 +744,20 @@
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+1 (555) 123-4567</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
                             <h3>Location</h3>
-                            <p>San Francisco, CA</p>
+                            <p>Europe (Carbon13 Accelerator)</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                            <i class="fas fa-calendar"></i>
                         </div>
                         <div>
-                            <h3>Business Hours</h3>
-                            <p>Mon-Fri: 9AM-6PM PST</p>
+                            <h3>Timeline</h3>
+                            <p>Q1 2025 - Launch Phase</p>
                         </div>
                     </div>
                 </div>
@@ -262,32 +772,22 @@
                             <input type="email" id="contact-email" name="contact-email" required>
                         </div>
                         <div class="form-group">
-                            <label for="contact-subject">Subject</label>
-                            <input type="text" id="contact-subject" name="contact-subject" required>
+                            <label for="contact-type">Interest Type</label>
+                            <select id="contact-type" name="contact-type" required>
+                                <option value="">Select your interest</option>
+                                <option value="early-access">Early Access</option>
+                                <option value="partnership">Partnership</option>
+                                <option value="investment">Investment Opportunity</option>
+                                <option value="general">General Inquiry</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="contact-message">Message</label>
-                            <textarea id="contact-message" name="contact-message" rows="5" required placeholder="How can we help you?"></textarea>
+                            <textarea id="contact-message" name="contact-message" rows="5" required placeholder="Tell us how you'd like to be involved..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section class="partners">
-        <div class="container">
-            <div class="section-header">
-                <h2>Trusted Partners & Data Sources</h2>
-                <p>Building on reliable foundations with industry leaders</p>
-            </div>
-            <div class="partners-grid">
-                <div class="partner-logo">Partner 1</div>
-                <div class="partner-logo">Partner 2</div>
-                <div class="partner-logo">Partner 3</div>
-                <div class="partner-logo">Partner 4</div>
             </div>
         </div>
     </section>
@@ -309,21 +809,31 @@
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="#problem">Problem</a></li>
                         <li><a href="#solution">Solution</a></li>
-                        <li><a href="#team">Team</a></li>
+                        <li><a href="#market">Market</a></li>
+                        <li><a href="#product">Product</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Contact</h4>
                     <ul>
                         <li><a href="mailto:hello@daio.com">hello@daio.com</a></li>
-                        <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+                        <li><a href="#contact">Get in Touch</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Patentable Technology</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 DAIO. All rights reserved.</p>
+                <p>&copy; 2024 DAIO. All rights reserved. Patentable technology.</p>
             </div>
         </div>
     </footer>
