@@ -386,57 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Interactive Company Positioning
-document.addEventListener('DOMContentLoaded', function() {
-    const companies = document.querySelectorAll('.company');
-    
-    companies.forEach(company => {
-        company.addEventListener('click', function() {
-            // Remove active class from all companies
-            companies.forEach(c => c.classList.remove('active'));
-            // Add active class to clicked company
-            this.classList.add('active');
-            
-            // Show company details (you can expand this)
-            const companyName = this.querySelector('span').textContent;
-            showCompanyDetails(companyName);
-        });
-    });
-});
 
-function showCompanyDetails(companyName) {
-    // Create a simple tooltip or modal
-    const tooltip = document.createElement('div');
-    tooltip.className = 'company-tooltip';
-    tooltip.innerHTML = `
-        <h4>${companyName}</h4>
-        <p>Click to learn more about ${companyName}'s positioning in the market.</p>
-    `;
-    
-    tooltip.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 1rem;
-        border-radius: 12px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
-        max-width: 300px;
-        text-align: center;
-        border: 1px solid #e2e8f0;
-    `;
-    
-    document.body.appendChild(tooltip);
-    
-    // Remove tooltip after 3 seconds
-    setTimeout(() => {
-        if (tooltip.parentNode) {
-            tooltip.remove();
-        }
-    }, 3000);
-}
 
 // Interactive Roadmap
 document.addEventListener('DOMContentLoaded', function() {
