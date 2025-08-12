@@ -675,7 +675,8 @@ revealStyle.textContent = `
         transform: translateY(0);
     }
     
-    section:first-child {
+    section:first-child,
+    section#solution {
         opacity: 1;
         transform: translateY(0);
     }
@@ -777,3 +778,407 @@ quarterStyle.textContent = `
     }
 `;
 document.head.appendChild(quarterStyle);
+
+// Bird Mascot Interactive Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const birdMascot = document.querySelector('.bird-mascot');
+    
+    if (birdMascot) {
+        // Add click interaction
+        birdMascot.addEventListener('click', function() {
+            // Add a special animation on click
+            this.style.animation = 'birdClick 0.5s ease-in-out';
+            
+            // Reset animation after it completes
+            setTimeout(() => {
+                this.style.animation = '';
+            }, 500);
+            
+            // Add a subtle bounce effect
+            this.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+        });
+        
+        // Add hover sound effect simulation (visual feedback)
+        birdMascot.addEventListener('mouseenter', function() {
+            // Add a subtle glow effect
+            this.style.filter = 'drop-shadow(0 0 10px rgba(16, 185, 129, 0.5))';
+        });
+        
+        birdMascot.addEventListener('mouseleave', function() {
+            // Remove glow effect
+            this.style.filter = '';
+        });
+        
+        // Add keyboard accessibility
+        birdMascot.setAttribute('tabindex', '0');
+        birdMascot.setAttribute('role', 'button');
+        birdMascot.setAttribute('aria-label', 'DAIO Bird Mascot - Click for interaction');
+        
+        birdMascot.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    }
+});
+
+// Add CSS animation for bird click
+const birdClickStyle = document.createElement('style');
+birdClickStyle.textContent = `
+    @keyframes birdClick {
+        0% { transform: scale(1) rotate(0deg); }
+        25% { transform: scale(1.2) rotate(-5deg); }
+        50% { transform: scale(1.1) rotate(5deg); }
+        75% { transform: scale(1.15) rotate(-2deg); }
+        100% { transform: scale(1) rotate(0deg); }
+    }
+`;
+document.head.appendChild(birdClickStyle);
+
+// Chatbot Functionality
+class DAIOAssistant {
+    constructor() {
+        this.isOpen = false;
+        this.isFirstVisit = true;
+        this.messageHistory = [];
+        this.currentUser = null;
+        this.init();
+    }
+
+    init() {
+        this.bindEvents();
+        this.loadUserPreferences();
+        this.setupQuickReplies();
+    }
+
+    bindEvents() {
+        // Bird mascot click
+        const birdMascot = document.querySelector('.bird-mascot');
+        if (birdMascot) {
+            birdMascot.addEventListener('click', () => {
+                this.openChatbot();
+            });
+        }
+
+        // First click anywhere on website
+        document.addEventListener('click', (e) => {
+            if (this.isFirstVisit && !e.target.closest('.chatbot') && !e.target.closest('.chatbot-trigger')) {
+                this.openChatbot();
+                this.isFirstVisit = false;
+            }
+        });
+
+        // Chatbot trigger button
+        const chatbotTrigger = document.getElementById('chatbotTrigger');
+        if (chatbotTrigger) {
+            chatbotTrigger.addEventListener('click', () => {
+                this.openChatbot();
+            });
+        }
+
+        // Close button
+        const closeBtn = document.getElementById('chatbotClose');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.closeChatbot();
+            });
+        }
+
+        // Send button
+        const sendBtn = document.getElementById('chatbotSend');
+        if (sendBtn) {
+            sendBtn.addEventListener('click', () => {
+                this.sendMessage();
+            });
+        }
+
+        // Input field
+        const inputField = document.getElementById('chatbotInput');
+        if (inputField) {
+            inputField.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    this.sendMessage();
+                }
+            });
+
+            inputField.addEventListener('input', () => {
+                this.toggleSendButton();
+            });
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.isOpen) {
+                this.closeChatbot();
+            }
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+            if (this.isOpen && !e.target.closest('.chatbot') && !e.target.closest('.chatbot-trigger')) {
+                this.closeChatbot();
+            }
+        });
+    }
+
+    openChatbot() {
+        const chatbot = document.getElementById('chatbot');
+        const trigger = document.getElementById('chatbotTrigger');
+        
+        if (chatbot && !this.isOpen) {
+            chatbot.classList.add('active');
+            this.isOpen = true;
+            
+            if (trigger) {
+                trigger.classList.add('hidden');
+            }
+            
+            // Focus on input field
+            const input = document.getElementById('chatbotInput');
+            if (input) {
+                setTimeout(() => input.focus(), 300);
+            }
+            
+            // Scroll to bottom of messages
+            this.scrollToBottom();
+            
+            // Track opening
+            this.trackEvent('chatbot_opened');
+        }
+    }
+
+    closeChatbot() {
+        const chatbot = document.getElementById('chatbot');
+        const trigger = document.getElementById('chatbotTrigger');
+        
+        if (chatbot && this.isOpen) {
+            chatbot.classList.remove('active');
+            this.isOpen = false;
+            
+            if (trigger) {
+                trigger.classList.remove('hidden');
+            }
+            
+            // Track closing
+            this.trackEvent('chatbot_closed');
+        }
+    }
+
+    sendMessage() {
+        const input = document.getElementById('chatbotInput');
+        const message = input?.value.trim();
+        
+        if (!message) return;
+        
+        // Add user message
+        this.addMessage(message, 'user');
+        
+        // Clear input
+        if (input) {
+            input.value = '';
+            this.toggleSendButton();
+        }
+        
+        // Process message and generate response
+        this.processMessage(message);
+        
+        // Track message sent
+        this.trackEvent('message_sent', { message: message });
+    }
+
+    addMessage(content, sender) {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        if (!messagesContainer) return;
+        
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;
+        
+        const avatar = document.createElement('div');
+        avatar.className = 'message-avatar';
+        
+        if (sender === 'bot') {
+            avatar.innerHTML = '<i class="fas fa-robot"></i>';
+        } else {
+            avatar.innerHTML = '<i class="fas fa-user"></i>';
+        }
+        
+        const messageContent = document.createElement('div');
+        messageContent.className = 'message-content';
+        messageContent.innerHTML = `<p>${this.escapeHtml(content)}</p>`;
+        
+        messageDiv.appendChild(avatar);
+        messageDiv.appendChild(messageContent);
+        
+        messagesContainer.appendChild(messageDiv);
+        
+        // Store in history
+        this.messageHistory.push({
+            sender: sender,
+            content: content,
+            timestamp: new Date().toISOString()
+        });
+        
+        // Scroll to bottom
+        this.scrollToBottom();
+    }
+
+    processMessage(message) {
+        const lowerMessage = message.toLowerCase();
+        
+        // Simulate typing delay
+        setTimeout(() => {
+            let response = this.generateResponse(lowerMessage);
+            this.addMessage(response, 'bot');
+        }, 500 + Math.random() * 1000);
+    }
+
+    generateResponse(message) {
+        // ESG Investing
+        if (message.includes('esg') || message.includes('environmental') || message.includes('sustainable')) {
+            return "ESG investing focuses on Environmental, Social, and Governance factors. DAIO integrates ESG data into every investment decision, helping you align your portfolio with your values while potentially improving returns. Our platform provides real-time ESG scoring and impact tracking.";
+        }
+        
+        // How DAIO works
+        if (message.includes('how') && message.includes('work') || message.includes('process')) {
+            return "DAIO works through three main pillars: Access (guided investing platform), Impact (ESG integration), and Participate (DAO governance). We start with a risk assessment, recommend a personalized portfolio, and provide ongoing monitoring with ESG impact tracking.";
+        }
+        
+        // Investment minimums
+        if (message.includes('minimum') || message.includes('cost') || message.includes('fee')) {
+            return "DAIO offers a $50 minimum investment to make sustainable investing accessible to everyone. Our fees are 5x cheaper than traditional ETFs, and we provide financial advisor-level guidance through our robo-advisor technology.";
+        }
+        
+        // Contact support
+        if (message.includes('contact') || message.includes('support') || message.includes('help')) {
+            return "You can reach our support team through the contact form on this website, or email us directly at hello@daio.com. We typically respond within 24 hours and are happy to help with any questions about sustainable investing.";
+        }
+        
+        // Portfolio questions
+        if (message.includes('portfolio') || message.includes('investment') || message.includes('asset')) {
+            return "DAIO offers a diverse range of investment options including stocks, bonds, crypto, and commodities. All investments are ESG-screened and can be customized based on your risk tolerance and impact preferences.";
+        }
+        
+        // Risk assessment
+        if (message.includes('risk') || message.includes('volatile') || message.includes('safe')) {
+            return "All investments carry some risk, but DAIO helps manage this through diversification and ESG screening. We assess your risk tolerance through our proprietary survey and recommend portfolios that balance growth potential with your comfort level.";
+        }
+        
+        // Default response
+        const defaultResponses = [
+            "That's a great question! Let me help you understand how DAIO can support your sustainable investment goals.",
+            "I'd be happy to help with that. Could you tell me more about what you're looking to learn about DAIO?",
+            "Thanks for asking! DAIO is designed to make sustainable investing simple and accessible. What specific aspect would you like to explore?",
+            "I'm here to help you understand DAIO's approach to responsible investing. What would you like to know more about?"
+        ];
+        
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+
+    setupQuickReplies() {
+        const quickReplies = document.querySelectorAll('.quick-reply');
+        quickReplies.forEach(reply => {
+            reply.addEventListener('click', () => {
+                const message = reply.getAttribute('data-message');
+                if (message) {
+                    this.addMessage(message, 'user');
+                    this.processMessage(message);
+                }
+            });
+        });
+    }
+
+    toggleSendButton() {
+        const input = document.getElementById('chatbotInput');
+        const sendBtn = document.getElementById('chatbotSend');
+        
+        if (input && sendBtn) {
+            const hasText = input.value.trim().length > 0;
+            sendBtn.disabled = !hasText;
+        }
+    }
+
+    scrollToBottom() {
+        const messagesContainer = document.getElementById('chatbotMessages');
+        if (messagesContainer) {
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    }
+
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    loadUserPreferences() {
+        // Load from localStorage if available
+        const saved = localStorage.getItem('daio_chatbot_prefs');
+        if (saved) {
+            try {
+                const prefs = JSON.parse(saved);
+                this.isFirstVisit = prefs.isFirstVisit !== false;
+                this.messageHistory = prefs.messageHistory || [];
+            } catch (e) {
+                console.warn('Failed to load chatbot preferences');
+            }
+        }
+    }
+
+    saveUserPreferences() {
+        // Save to localStorage
+        const prefs = {
+            isFirstVisit: this.isFirstVisit,
+            messageHistory: this.messageHistory.slice(-50) // Keep last 50 messages
+        };
+        
+        try {
+            localStorage.setItem('daio_chatbot_prefs', JSON.stringify(prefs));
+        } catch (e) {
+            console.warn('Failed to save chatbot preferences');
+        }
+    }
+
+    trackEvent(eventName, data = {}) {
+        // Analytics tracking (can be integrated with Google Analytics, etc.)
+        console.log(`Chatbot Event: ${eventName}`, data);
+        
+        // Save preferences after events
+        this.saveUserPreferences();
+    }
+
+    // Public methods for external use
+    open() {
+        this.openChatbot();
+    }
+
+    close() {
+        this.closeChatbot();
+    }
+
+    isOpen() {
+        return this.isOpen;
+    }
+}
+
+// Initialize chatbot when DOM is loaded
+let daioAssistant;
+document.addEventListener('DOMContentLoaded', function() {
+    daioAssistant = new DAIOAssistant();
+});
+
+// Global functions for external access
+function openChatbot() {
+    if (daioAssistant) {
+        daioAssistant.open();
+    }
+}
+
+function closeChatbot() {
+    if (daioAssistant) {
+        daioAssistant.close();
+    }
+}

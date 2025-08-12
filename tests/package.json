@@ -1,0 +1,93 @@
+{
+  "name": "daio-website-tests",
+  "version": "1.0.0",
+  "description": "Comprehensive test suite for the DAIO website",
+  "main": "test-runner.js",
+  "scripts": {
+    "test": "node test-runner.js",
+    "test:verbose": "node test-runner.js --verbose",
+    "test:export": "node test-runner.js --export",
+    "test:browser": "node test-runner.js --browser",
+    "test:help": "node test-runner.js --help",
+    "test:ci": "node test-runner.js --headless --export",
+    "test:watch": "nodemon --watch ../index.html --watch ../styles.css --watch ../script.js --exec 'npm test'",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix",
+    "validate": "npm run lint && npm test",
+    "coverage": "node test-runner.js --export && echo 'Coverage report generated'"
+  },
+  "keywords": [
+    "testing",
+    "website",
+    "daio",
+    "esg",
+    "investment",
+    "unit-tests",
+    "integration-tests",
+    "accessibility-tests",
+    "performance-tests"
+  ],
+  "author": "DAIO Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "nodemon": "^3.0.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/daio-website.git",
+    "directory": "tests"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/daio-website/issues"
+  },
+  "homepage": "https://github.com/your-org/daio-website#readme",
+  "files": [
+    "*.js",
+    "*.html",
+    "*.json",
+    "README.md"
+  ],
+  "directories": {
+    "test": "."
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/test-setup.js"],
+    "collectCoverageFrom": [
+      "../script.js",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-console": "off",
+      "no-unused-vars": "warn",
+      "prefer-const": "error"
+    }
+  }
+}

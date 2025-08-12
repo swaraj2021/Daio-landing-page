@@ -46,10 +46,21 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-illustration">
-                    <div class="floating-shapes">
-                        <div class="shape shape-1"></div>
-                        <div class="shape shape-2"></div>
-                        <div class="shape shape-3"></div>
+                    <div class="bird-mascot">
+                        <div class="bird-body">
+                            <div class="bird-head">
+                                <div class="bird-eye left-eye">
+                                    <div class="eye-reflection"></div>
+                                </div>
+                                <div class="bird-eye right-eye">
+                                    <div class="eye-reflection"></div>
+                                </div>
+                                <div class="bird-beak"></div>
+                                <div class="bird-crest"></div>
+                            </div>
+                            <div class="bird-wing"></div>
+                            <div class="bird-tail"></div>
+                        </div>
                     </div>
                     <div class="hero-chart">
                         <canvas id="heroChart"></canvas>
@@ -227,7 +238,7 @@
                 <div class="pillar participate">
                     <div class="pillar-header">
                         <h3>Participate</h3>
-                        <p>DAO ownership via a Voting Portal ©¹</p>
+                        <p>DAO ownership via a Voting Portal</p>
                     </div>
                     <div class="pillar-features">
                         <ul>
@@ -758,6 +769,49 @@
             </div>
         </div>
     </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot" class="chatbot">
+        <div class="chatbot-header">
+            <div class="chatbot-title">
+                <i class="fas fa-robot"></i>
+                <span>DAIO Assistant</span>
+            </div>
+            <button class="chatbot-close" id="chatbotClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="message bot-message">
+                <div class="message-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="message-content">
+                    <p>Hello! I'm your DAIO investment assistant. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbotInput" placeholder="Type your message..." maxlength="500">
+            <button class="chatbot-send" id="chatbotSend">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+        <div class="chatbot-quick-replies">
+            <button class="quick-reply" data-message="Tell me about ESG investing">ESG Investing</button>
+            <button class="quick-reply" data-message="How does DAIO work?">How DAIO Works</button>
+            <button class="quick-reply" data-message="What are the investment minimums?">Investment Minimums</button>
+            <button class="quick-reply" data-message="Contact support">Contact Support</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Trigger Overlay -->
+    <div id="chatbotTrigger" class="chatbot-trigger">
+        <div class="trigger-icon">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="trigger-text">Need help?</div>
+    </div>
 
     <script src="script.js"></script>
 </body>

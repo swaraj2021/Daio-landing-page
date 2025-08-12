@@ -207,47 +207,179 @@ body {
     justify-content: center;
 }
 
-.floating-shapes {
+/* Bird Mascot Styles */
+.bird-mascot {
     position: absolute;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.bird-mascot:hover {
+    transform: scale(1.05);
+}
+
+.bird-mascot:hover .bird-body {
+    animation-play-state: paused;
+}
+
+.bird-body {
+    position: relative;
     width: 100%;
     height: 100%;
+    animation: birdFloat 6s ease-in-out infinite;
+    transition: all 0.3s ease;
+}
+
+.bird-head {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 60px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 3px solid #047857;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-head {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.bird-eye {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: #0f172a;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-eye {
+    background: #1e293b;
+    transform: scale(1.2);
+}
+
+.left-eye {
+    top: 15px;
+    left: 15px;
+}
+
+.right-eye {
+    top: 15px;
+    right: 15px;
+}
+
+.eye-reflection {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 6px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .eye-reflection {
+    background: #fbbf24;
+    transform: scale(1.3);
+}
+
+.bird-beak {
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 16px solid #0f172a;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-beak {
+    border-top-color: #374151;
+    transform: translateX(-50%) scale(1.1);
+}
+
+.bird-crest {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 12px solid #10b981;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-crest {
+    border-bottom-color: #34d399;
+    transform: translateX(-50%) scale(1.2);
+}
+
+.bird-wing {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 60px;
+    height: 40px;
+    background: linear-gradient(135deg, #059669, #047857);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 2px solid #065f46;
+    transform: rotate(-15deg);
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-wing {
+    background: linear-gradient(135deg, #10b981, #059669);
+    transform: rotate(-10deg) scale(1.1);
+}
+
+.bird-tail {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    border: 2px solid #047857;
+    transition: all 0.3s ease;
+}
+
+.bird-mascot:hover .bird-tail {
+    background: linear-gradient(135deg, #34d399, #10b981);
+    transform: translateX(-50%) scale(1.1);
+}
+
+@keyframes birdFloat {
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    50% { 
+        transform: translateY(-15px) rotate(2deg); 
+    }
+}
+
+/* Remove old floating shapes styles */
+.floating-shapes {
+    display: none;
 }
 
 .shape {
-    position: absolute;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #10b981, #059669);
-    opacity: 0.1;
-    animation: float 6s ease-in-out infinite;
-}
-
-.shape-1 {
-    width: 80px;
-    height: 80px;
-    top: 20%;
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.shape-2 {
-    width: 120px;
-    height: 120px;
-    top: 60%;
-    right: 20%;
-    animation-delay: 2s;
-}
-
-.shape-3 {
-    width: 60px;
-    height: 60px;
-    bottom: 20%;
-    left: 40%;
-    animation-delay: 4s;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(180deg); }
+    display: none;
 }
 
 .hero-chart {
@@ -446,12 +578,15 @@ body {
 .solution {
     padding: 80px 0;
     background: white;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .solution-pillars {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 2rem;
+    min-height: 200px;
 }
 
 .pillar {
@@ -460,6 +595,7 @@ body {
     padding: 2.5rem;
     border: 1px solid #e2e8f0;
     transition: all 0.3s ease;
+    min-height: 300px;
 }
 
 .pillar:hover {
@@ -1388,6 +1524,7 @@ body {
     
     .solution-pillars {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
     
     .market-opportunities {
@@ -1435,19 +1572,6 @@ body {
     .team-size {
         grid-template-columns: repeat(4, 1fr);
     }
-    
-    .positioning-chart {
-        padding: 1.5rem;
-    }
-    
-    .chart-axes {
-        height: 300px;
-    }
-    
-    .company {
-        font-size: 0.7rem;
-        padding: 0.5rem;
-    }
 }
 
 @media (max-width: 480px) {
@@ -1489,4 +1613,501 @@ body {
         font-size: 0.7rem;
         padding: 0.4rem 0.8rem;
     }
+}
+
+/* Responsive design for bird mascot */
+@media (max-width: 768px) {
+    .bird-mascot {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .bird-head {
+        width: 60px;
+        height: 45px;
+        top: 15px;
+    }
+    
+    .bird-eye {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .left-eye {
+        top: 12px;
+        left: 12px;
+    }
+    
+    .right-eye {
+        top: 12px;
+        right: 12px;
+    }
+    
+    .eye-reflection {
+        width: 4px;
+        height: 4px;
+    }
+    
+    .bird-beak {
+        border-left-width: 6px;
+        border-right-width: 6px;
+        border-top-width: 12px;
+    }
+    
+    .bird-crest {
+        border-left-width: 4px;
+        border-right-width: 4px;
+        border-bottom-width: 8px;
+    }
+    
+    .bird-wing {
+        width: 45px;
+        height: 30px;
+        top: 45px;
+        right: 15px;
+    }
+    
+    .bird-tail {
+        width: 30px;
+        height: 15px;
+        bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .bird-mascot {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .bird-head {
+        width: 48px;
+        height: 36px;
+        top: 12px;
+    }
+    
+    .bird-eye {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .left-eye {
+        top: 10px;
+        left: 10px;
+    }
+    
+    .right-eye {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .eye-reflection {
+        width: 3px;
+        height: 3px;
+    }
+    
+    .bird-beak {
+        border-left-width: 5px;
+        border-right-width: 5px;
+        border-top-width: 10px;
+    }
+    
+    .bird-crest {
+        border-left-width: 3px;
+        border-right-width: 3px;
+        border-bottom-width: 6px;
+    }
+    
+    .bird-wing {
+        width: 36px;
+        height: 24px;
+        top: 36px;
+        right: 12px;
+    }
+    
+    .bird-tail {
+        width: 24px;
+        height: 12px;
+        bottom: 12px;
+    }
+}
+
+/* Chatbot Styles */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 90vw;
+    height: 500px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    animation: chatbotSlideUp 0.3s ease-out;
+}
+
+.chatbot.active {
+    display: flex;
+}
+
+.chatbot-header {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px 20px 0 0;
+}
+
+.chatbot-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.chatbot-title i {
+    font-size: 1.2rem;
+}
+
+.chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatbot-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.chatbot-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    max-width: 80%;
+}
+
+.bot-message {
+    align-self: flex-start;
+}
+
+.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.bot-message .message-avatar {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.user-message .message-avatar {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+.message-content {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 18px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+}
+
+.bot-message .message-content {
+    border-bottom-left-radius: 4px;
+}
+
+.user-message .message-content {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border-bottom-right-radius: 4px;
+}
+
+.message-content p {
+    margin: 0;
+    line-height: 1.4;
+    font-size: 0.95rem;
+}
+
+.chatbot-input {
+    padding: 20px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.chatbot-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.chatbot-input input:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.chatbot-send {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.chatbot-send:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.chatbot-send:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.chatbot-quick-replies {
+    padding: 15px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-reply {
+    background: white;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.quick-reply:hover {
+    background: #10b981;
+    color: white;
+    border-color: #10b981;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Chatbot Trigger */
+.chatbot-trigger {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    animation: triggerBounce 2s ease-in-out infinite;
+}
+
+.chatbot-trigger:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.4);
+}
+
+.chatbot-trigger.hidden {
+    display: none;
+}
+
+.trigger-icon {
+    font-size: 1.2rem;
+}
+
+.trigger-text {
+    font-size: 0.9rem;
+}
+
+/* Chatbot Animations */
+@keyframes chatbotSlideUp {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes triggerBounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Message Animation */
+.message {
+    animation: messageSlideIn 0.3s ease-out;
+}
+
+@keyframes messageSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .chatbot {
+        width: 95vw;
+        height: 70vh;
+        bottom: 10px;
+        left: 2.5vw;
+        transform: none;
+    }
+    
+    .chatbot-header {
+        padding: 15px;
+    }
+    
+    .chatbot-title {
+        font-size: 1rem;
+    }
+    
+    .chatbot-messages {
+        padding: 15px;
+    }
+    
+    .chatbot-input {
+        padding: 15px;
+    }
+    
+    .chatbot-quick-replies {
+        padding: 10px 15px;
+    }
+    
+    .quick-reply {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+    
+    .chatbot-trigger {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 16px;
+    }
+    
+    .trigger-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbot {
+        width: 100vw;
+        height: 80vh;
+        bottom: 0;
+        left: 0;
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .chatbot-header {
+        border-radius: 20px 20px 0 0;
+    }
+    
+    .message {
+        max-width: 90%;
+    }
+    
+    .chatbot-trigger {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 12px;
+    }
+}
+
+/* Chatbot Overlay */
+.chatbot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.chatbot-overlay.active {
+    display: block;
 }
