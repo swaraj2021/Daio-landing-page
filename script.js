@@ -1178,6 +1178,7 @@ function initializeAfterContent() {
             initScrollReveal();
             initTimeline();
             initBirdMascot();
+            initNews();
             daioAssistant = new DAIOAssistant();
             console.log('All features initialized after content load');
         } else {
@@ -1204,3 +1205,181 @@ function closeChatbot() {
         daioAssistant.close();
     }
 }
+
+// News Functionality
+function initNews() {
+    // Initialize news filtering
+    initNewsFilters();
+    
+    // Initialize news modal
+    initNewsModal();
+    
+    // Initialize news pagination
+    initNewsPagination();
+}
+
+function initNewsFilters() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const newsCards = document.querySelectorAll('.news-card');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.dataset.filter;
+            
+            // Update active button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Filter news cards
+            newsCards.forEach(card => {
+                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                const shouldShow = filter === 'all' || tags.includes(filter.toLowerCase());
+                
+                if (shouldShow) {
+                    card.style.display = 'block';
+                    card.style.animation = 'fadeIn 0.5s ease-in';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+}
+
+function initNewsModal() {
+    // Create modal HTML
+    const modalHTML = `
+        <div class="news-modal" id="newsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="modal-close" id="modalClose">&times;</button>
+                    <div class="modal-meta">
+                        <span class="source"></span>
+                        <span class="date"></span>
+                        <span class="read-time"></span>
+                    </div>
+                    <h2 class="modal-title"></h2>
+                    <div class="modal-tags"></div>
+                </div>
+                <div class="modal-body">
+                    <p class="modal-content-text"></p>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    
+    // Add click handlers for read more buttons
+    document.addEventListener('click', (e) => {
+        if (e.target.classList.contains('read-more')) {
+            const card = e.target.closest('.news-card');
+            const articleId = card.dataset.articleId;
+            openNewsModal(articleId);
+        }
+    });
+    
+    // Close modal handlers
+    document.getElementById('modalClose').addEventListener('click', closeNewsModal);
+    document.getElementById('newsModal').addEventListener('click', (e) => {
+        if (e.target.id === 'newsModal') {
+            closeNewsModal();
+        }
+    });
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeNewsModal();
+        }
+    });
+}
+
+function openNewsModal(articleId) {
+    if (!window.contentManager || !window.contentManager.content.news) return;
+    
+    const articles = window.contentManager.content.news.articles;
+    const article = articles.find(a => a.id == articleId);
+    
+    if (!article) return;
+    
+    const modal = document.getElementById('newsModal');
+    const source = modal.querySelector('.source');
+    const date = modal.querySelector('.date');
+    const readTime = modal.querySelector('.read-time');
+    const title = modal.querySelector('.modal-title');
+    const tags = modal.querySelector('.modal-tags');
+    const content = modal.querySelector('.modal-content-text');
+    
+    source.textContent = article.source;
+    date.textContent = new Date(article.date).toLocaleDateString('en-US', { 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    });
+    readTime.textContent = article.readTime;
+    title.textContent = article.title;
+    tags.innerHTML = article.tags.map(tag => 
+        `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`
+    ).join('');
+    content.textContent = article.content;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeNewsModal() {
+    const modal = document.getElementById('newsModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+function initNewsPagination() {
+    const pageNumbers = document.querySelectorAll('.page-number');
+    const prevBtn = document.querySelector('.pagination-btn.prev');
+    const nextBtn = document.querySelector('.pagination-btn.next');
+    
+    pageNumbers.forEach(number => {
+        number.addEventListener('click', () => {
+            pageNumbers.forEach(n => n.classList.remove('active'));
+            number.classList.add('active');
+            
+            // Update pagination buttons
+            const currentPage = parseInt(number.textContent);
+            prevBtn.disabled = currentPage === 1;
+            nextBtn.disabled = currentPage === pageNumbers.length;
+        });
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        const activePage = document.querySelector('.page-number.active');
+        const currentPage = parseInt(activePage.textContent);
+        if (currentPage > 1) {
+            pageNumbers[currentPage - 2].click();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        const activePage = document.querySelector('.page-number.active');
+        const currentPage = parseInt(activePage.textContent);
+        if (currentPage < pageNumbers.length) {
+            pageNumbers[currentPage].click();
+        }
+    });
+}
+
+// Add fadeIn animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);

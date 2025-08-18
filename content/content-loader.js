@@ -80,6 +80,9 @@ class ContentManager {
         // Inject moonshot section
         this.injectMoonshot();
         
+        // Inject news section
+        this.injectNews();
+        
         // Inject contact section
         this.injectContact();
         
@@ -481,6 +484,79 @@ class ContentManager {
         }
     }
 
+    injectNews() {
+        if (!this.content.news) return;
+        
+        const news = this.content.news;
+        
+        // Update header
+        const headerTitle = document.querySelector('#news .section-header h2');
+        const headerSubtitle = document.querySelector('#news .section-header p');
+        
+        if (headerTitle) headerTitle.textContent = news.header.title;
+        if (headerSubtitle) headerSubtitle.textContent = news.header.subtitle;
+        
+        // Update filters
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        filterButtons.forEach((btn, index) => {
+            if (news.filters[index]) {
+                btn.textContent = news.filters[index].text;
+                btn.dataset.filter = news.filters[index].id;
+                if (news.filters[index].active) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            }
+        });
+        
+        // Update featured article
+        const featuredArticle = news.featured.article;
+        const featuredImage = document.querySelector('.featured-image img');
+        const featuredSource = document.querySelector('.featured-content .source');
+        const featuredDate = document.querySelector('.featured-content .date');
+        const featuredReadTime = document.querySelector('.featured-content .read-time');
+        const featuredTitle = document.querySelector('.featured-content h4');
+        const featuredExcerpt = document.querySelector('.featured-content p');
+        const featuredTags = document.querySelector('.featured-content .article-tags');
+        
+        if (featuredImage) featuredImage.src = featuredArticle.image;
+        if (featuredSource) featuredSource.textContent = featuredArticle.source;
+        if (featuredDate) featuredDate.textContent = new Date(featuredArticle.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        if (featuredReadTime) featuredReadTime.textContent = featuredArticle.readTime;
+        if (featuredTitle) featuredTitle.textContent = featuredArticle.title;
+        if (featuredExcerpt) featuredExcerpt.textContent = featuredArticle.excerpt;
+        if (featuredTags) {
+            featuredTags.innerHTML = featuredArticle.tags.map(tag => 
+                `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`
+            ).join('');
+        }
+        
+        // Update news grid
+        const newsGrid = document.querySelector('.news-grid');
+        if (newsGrid) {
+            newsGrid.innerHTML = news.articles.map(article => `
+                <div class="news-card" data-article-id="${article.id}">
+                    <div class="news-card-image">
+                        <img src="${article.image}" alt="${article.title}">
+                    </div>
+                    <div class="news-card-content">
+                        <div class="news-card-meta">
+                            <span class="source">${article.source}</span>
+                            <span class="date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                        </div>
+                        <h5>${article.title}</h5>
+                        <p>${article.excerpt}</p>
+                        <div class="news-card-tags">
+                            ${article.tags.map(tag => `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`).join('')}
+                        </div>
+                        <button class="btn btn-outline read-more">Read More</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    }
+
     injectContact() {
         if (!this.content.contact) return;
         
@@ -665,6 +741,9 @@ class ContentManager {
                     break;
                 case 'moonshot':
                     this.injectMoonshot();
+                    break;
+                case 'news':
+                    this.injectNews();
                     break;
                 case 'contact':
                     this.injectContact();

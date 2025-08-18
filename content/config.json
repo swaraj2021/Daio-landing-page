@@ -13,6 +13,7 @@
     "roadmap": "content/roadmap.json",
     "gtm": "content/gtm.json",
     "moonshot": "content/moonshot.json",
+    "news": "content/news.json",
     "contact": "content/contact.json",
     "footer": "content/footer.json",
     "chatbot": "content/chatbot.json"

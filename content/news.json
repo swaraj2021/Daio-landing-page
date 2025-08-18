@@ -1,0 +1,179 @@
+{
+  "header": {
+    "title": "Latest News & Insights",
+    "subtitle": "Stay updated with the latest developments in climate finance, greentech, and ESG investing"
+  },
+  "filters": [
+    {
+      "id": "all",
+      "text": "All News",
+      "active": true
+    },
+    {
+      "id": "uk",
+      "text": "UK",
+      "active": false
+    },
+    {
+      "id": "usa",
+      "text": "USA",
+      "active": false
+    },
+    {
+      "id": "eu",
+      "text": "EU",
+      "active": false
+    },
+    {
+      "id": "finance",
+      "text": "Finance",
+      "active": false
+    },
+    {
+      "id": "environmental",
+      "text": "Environmental",
+      "active": false
+    },
+    {
+      "id": "greentech",
+      "text": "Greentech",
+      "active": false
+    },
+    {
+      "id": "climatech",
+      "text": "Climatech",
+      "active": false
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "title": "UK Government Announces £1.5B Green Finance Package",
+      "excerpt": "The UK government has unveiled a comprehensive green finance package aimed at accelerating the transition to net-zero emissions and supporting climate-friendly investments.",
+      "content": "The UK government has unveiled a comprehensive green finance package worth £1.5 billion aimed at accelerating the transition to net-zero emissions and supporting climate-friendly investments. The package includes new funding for green infrastructure projects, enhanced ESG reporting requirements, and incentives for sustainable investment products. Chancellor Jeremy Hunt emphasized that this initiative will position the UK as a global leader in climate finance while creating thousands of green jobs across the country.",
+      "source": "Financial Times",
+      "date": "2024-12-19",
+      "url": "#",
+      "image": "images/news/uk-green-finance.jpg",
+      "region": "uk",
+      "category": "finance",
+      "tags": ["uk", "finance", "climatech"],
+      "readTime": "3 min read"
+    },
+    {
+      "id": 2,
+      "title": "EU Taxonomy Update: New Criteria for Climate Transition",
+      "excerpt": "The European Commission has updated its sustainable finance taxonomy with new criteria for climate transition activities, providing clearer guidance for investors.",
+      "content": "The European Commission has updated its sustainable finance taxonomy with new criteria for climate transition activities, providing clearer guidance for investors seeking to align their portfolios with climate objectives. The updated taxonomy includes expanded definitions for renewable energy, energy efficiency, and circular economy activities. This move is expected to unlock billions in green investment across the EU while ensuring transparency and preventing greenwashing.",
+      "source": "Reuters",
+      "date": "2024-12-18",
+      "url": "#",
+      "image": "images/news/eu-taxonomy.jpg",
+      "region": "eu",
+      "category": "finance",
+      "tags": ["eu", "finance", "environmental"],
+      "readTime": "4 min read"
+    },
+    {
+      "id": 3,
+      "title": "US Climate Tech Startups Raise Record $8.2B in Q4",
+      "excerpt": "Climate technology startups in the United States have raised a record $8.2 billion in venture capital funding during Q4 2024, signaling strong investor confidence.",
+      "content": "Climate technology startups in the United States have raised a record $8.2 billion in venture capital funding during Q4 2024, signaling strong investor confidence in the sector's growth potential. The funding surge was led by companies focused on renewable energy, carbon capture, sustainable agriculture, and electric vehicle infrastructure. Venture capitalists are increasingly recognizing climate tech as one of the most promising investment opportunities of the decade.",
+      "source": "TechCrunch",
+      "date": "2024-12-17",
+      "url": "#",
+      "image": "images/news/us-climate-tech.jpg",
+      "region": "usa",
+      "category": "greentech",
+      "tags": ["usa", "greentech", "climatech"],
+      "readTime": "5 min read"
+    },
+    {
+      "id": 4,
+      "title": "UK Pension Funds Commit to Net-Zero Investment Strategies",
+      "excerpt": "Major UK pension funds representing over £300 billion in assets have committed to implementing net-zero investment strategies by 2030.",
+      "content": "Major UK pension funds representing over £300 billion in assets have committed to implementing net-zero investment strategies by 2030. The initiative, coordinated by the UK Sustainable Investment and Finance Association, includes commitments to divest from fossil fuels, increase investments in renewable energy, and engage with portfolio companies on climate action. This represents a significant shift in institutional investment priorities toward climate-aligned portfolios.",
+      "source": "Pensions & Investments",
+      "date": "2024-12-16",
+      "url": "#",
+      "image": "images/news/uk-pensions.jpg",
+      "region": "uk",
+      "category": "finance",
+      "tags": ["uk", "finance", "environmental"],
+      "readTime": "4 min read"
+    },
+    {
+      "id": 5,
+      "title": "EU Green Bond Standard Attracts €50B in First Year",
+      "excerpt": "The European Union's Green Bond Standard has successfully attracted €50 billion in investments during its first year of operation.",
+      "content": "The European Union's Green Bond Standard has successfully attracted €50 billion in investments during its first year of operation, exceeding initial expectations. The standard, which provides a voluntary framework for green bond issuance, has been adopted by governments, corporations, and financial institutions across Europe. The success demonstrates strong market demand for credible, transparent green investment products that contribute to climate objectives.",
+      "source": "Bloomberg",
+      "date": "2024-12-15",
+      "url": "#",
+      "image": "images/news/eu-green-bonds.jpg",
+      "region": "eu",
+      "category": "finance",
+      "tags": ["eu", "finance", "climatech"],
+      "readTime": "3 min read"
+    },
+    {
+      "id": 6,
+      "title": "US Federal Reserve Issues Climate Risk Guidelines",
+      "excerpt": "The Federal Reserve has issued new guidelines for banks to assess and manage climate-related financial risks in their lending and investment activities.",
+      "content": "The Federal Reserve has issued new guidelines for banks to assess and manage climate-related financial risks in their lending and investment activities. The guidelines require banks to incorporate climate risk into their stress testing, risk management frameworks, and strategic planning. This represents a significant step toward integrating climate considerations into mainstream financial regulation and supervision.",
+      "source": "Wall Street Journal",
+      "date": "2024-12-14",
+      "url": "#",
+      "image": "images/news/us-fed-climate.jpg",
+      "region": "usa",
+      "category": "finance",
+      "tags": ["usa", "finance", "environmental"],
+      "readTime": "6 min read"
+    },
+    {
+      "id": 7,
+      "title": "UK Climate Tech Accelerator Launches £100M Fund",
+      "excerpt": "A new UK-based climate technology accelerator has launched with a £100 million fund to support early-stage climate tech startups.",
+      "content": "A new UK-based climate technology accelerator has launched with a £100 million fund to support early-stage climate tech startups. The accelerator, backed by major UK investors and government funding, will provide funding, mentorship, and access to networks for startups focused on renewable energy, carbon capture, sustainable materials, and climate adaptation technologies. This initiative aims to position the UK as a global hub for climate innovation.",
+      "source": "Sifted",
+      "date": "2024-12-13",
+      "url": "#",
+      "image": "images/news/uk-climate-accelerator.jpg",
+      "region": "uk",
+      "category": "greentech",
+      "tags": ["uk", "greentech", "climatech"],
+      "readTime": "4 min read"
+    },
+    {
+      "id": 8,
+      "title": "EU Carbon Border Adjustment Mechanism Takes Effect",
+      "excerpt": "The European Union's Carbon Border Adjustment Mechanism (CBAM) has officially taken effect, imposing carbon costs on imported goods.",
+      "content": "The European Union's Carbon Border Adjustment Mechanism (CBAM) has officially taken effect, imposing carbon costs on imported goods based on their carbon footprint. The mechanism aims to prevent carbon leakage and encourage global climate action by ensuring that imported products face similar carbon costs as EU-produced goods. This policy is expected to significantly impact global trade patterns and accelerate decarbonization efforts worldwide.",
+      "source": "Euronews",
+      "date": "2024-12-12",
+      "url": "#",
+      "image": "images/news/eu-cbam.jpg",
+      "region": "eu",
+      "category": "environmental",
+      "tags": ["eu", "environmental", "climatech"],
+      "readTime": "5 min read"
+    }
+  ],
+  "featured": {
+    "title": "Featured Story",
+    "article": {
+      "id": 9,
+      "title": "Global Climate Finance Reaches $1.3 Trillion in 2024",
+      "excerpt": "Global climate finance flows have reached $1.3 trillion in 2024, marking a 15% increase from the previous year and demonstrating accelerating investment in climate solutions.",
+      "content": "Global climate finance flows have reached $1.3 trillion in 2024, marking a 15% increase from the previous year and demonstrating accelerating investment in climate solutions. The growth was driven by increased private sector investment in renewable energy, energy efficiency, and climate adaptation projects. However, the report also highlights that current investment levels remain insufficient to meet the Paris Agreement's climate goals, requiring a tripling of climate finance by 2030.",
+      "source": "Climate Policy Initiative",
+      "date": "2024-12-11",
+      "url": "#",
+      "image": "images/news/global-climate-finance.jpg",
+      "region": "global",
+      "category": "finance",
+      "tags": ["global", "finance", "climatech"],
+      "readTime": "7 min read"
+    }
+  }
+}
