@@ -24,8 +24,13 @@
                 <li><a href="#market">Market</a></li>
                 <li><a href="#product">Product</a></li>
                 <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#news">News</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
+            <div class="nav-auth">
+                <button class="btn btn-outline" id="loginBtn">Login</button>
+                <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+            </div>
             <div class="hamburger">
                 <span></span>
                 <span></span>
@@ -850,6 +855,76 @@
         </div>
     </footer>
 
+    <!-- Auth Modals -->
+    <div id="loginModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Login to DAIO</h2>
+                <button class="auth-modal-close" id="loginModalClose">&times;</button>
+            </div>
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe" name="rememberMe">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary auth-submit">Login</button>
+                <div class="auth-links">
+                    <a href="#" id="forgotPassword">Forgot Password?</a>
+                    <span>Don't have an account? <a href="#" id="showSignup">Sign Up</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="signupModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <div class="auth-modal-header">
+                <h2>Create Your DAIO Account</h2>
+                <button class="auth-modal-close" id="signupModalClose">&times;</button>
+            </div>
+            <form id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password" id="signupPassword" name="password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupConfirmPassword">Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" name="confirmPassword" required>
+                </div>
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                        <span class="checkmark"></span>
+                        I agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-primary auth-submit">Create Account</button>
+                <div class="auth-links">
+                    <span>Already have an account? <a href="#" id="showLogin">Login</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Chatbot -->
     <div id="chatbot" class="chatbot">
         <div class="chatbot-header">
@@ -893,6 +968,7 @@
         <div class="trigger-text">Need help?</div>
     </div>
 
+    <script src="auth.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

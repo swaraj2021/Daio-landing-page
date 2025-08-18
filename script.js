@@ -1179,6 +1179,7 @@ function initializeAfterContent() {
             initTimeline();
             initBirdMascot();
             initNews();
+            initAuth();
             daioAssistant = new DAIOAssistant();
             console.log('All features initialized after content load');
         } else {

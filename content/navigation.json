@@ -33,5 +33,17 @@
       "text": "Contact",
       "href": "#contact"
     }
+  ],
+  "authButtons": [
+    {
+      "text": "Login",
+      "class": "btn btn-outline",
+      "action": "login"
+    },
+    {
+      "text": "Sign Up",
+      "class": "btn btn-primary",
+      "action": "signup"
+    }
   ]
 }
