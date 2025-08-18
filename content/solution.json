@@ -1,0 +1,39 @@
+{
+  "header": {
+    "title": "DAIO (MVP) Core Innovation Pillars",
+    "subtitle": "Three revolutionary pillars that solve the layered problems"
+  },
+  "pillars": [
+    {
+      "type": "access",
+      "title": "Access",
+      "description": "End-to-end guided investing platform for $50 minimum investment",
+      "features": [
+        "crypto, stocks, bonds, gold, etc in one place",
+        "financial advisor level advice (robo) and customization",
+        "portfolio recommendations and auto-rebalancing",
+        "5 times cheaper than an ETF!"
+      ]
+    },
+    {
+      "type": "impact",
+      "title": "Impact",
+      "description": "ESG-Integrated Decision-Making & Tracking including a LIVE CO2 Portfolio Indicator ©¹",
+      "features": [
+        "Increase market transparency nearly 90%",
+        "Scope 1-3 highly integrated",
+        "Scope 4 emissions (WIP - product lifecycle)"
+      ]
+    },
+    {
+      "type": "participate",
+      "title": "Participate",
+      "description": "DAO ownership via a Voting Portal",
+      "features": [
+        "Tokens received for investing",
+        "Each token grants ownership and DAIO voting",
+        "*only acquirable by DAIO investors, and subject to halving (anti-inflation measures - similar to BTC)"
+      ]
+    }
+  ]
+}

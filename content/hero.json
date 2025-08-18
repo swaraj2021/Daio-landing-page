@@ -1,0 +1,20 @@
+{
+  "title": "DAIO",
+  "tagline": "We offer a guided, end-to-end investing platform that aligns capital with purpose - offering institutional-grade strategy, ESG+ integrated intelligence, and real ownership - so your money creates both growth and good.",
+  "buttons": [
+    {
+      "text": "Get Early Access",
+      "href": "#contact",
+      "class": "btn btn-primary"
+    },
+    {
+      "text": "Partner with Us",
+      "href": "#contact",
+      "class": "btn btn-secondary"
+    }
+  ],
+  "image": {
+    "src": "images/my-bird.png",
+    "alt": "Bird mascot"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "header": {
+    "title": "Get in Touch",
+    "subtitle": "Ready to be part of the future of impact investing? Let's start a conversation."
+  },
+  "info": [
+    {
+      "icon": "fas fa-envelope",
+      "title": "Email",
+      "value": "hello@daio.com"
+    },
+    {
+      "icon": "fas fa-map-marker-alt",
+      "title": "Location",
+      "value": "Europe (Carbon13 Accelerator)"
+    },
+    {
+      "icon": "fas fa-calendar",
+      "title": "Timeline",
+      "value": "Q1 2025 - Launch Phase"
+    }
+  ],
+  "form": {
+    "fields": [
+      {
+        "id": "contact-name",
+        "name": "contact-name",
+        "label": "Name",
+        "type": "text",
+        "required": true
+      },
+      {
+        "id": "contact-email",
+        "name": "contact-email",
+        "label": "Email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "id": "contact-type",
+        "name": "contact-type",
+        "label": "Interest Type",
+        "type": "select",
+        "required": true,
+        "options": [
+          { "value": "", "text": "Select your interest" },
+          { "value": "early-access", "text": "Early Access" },
+          { "value": "partnership", "text": "Partnership" },
+          { "value": "investment", "text": "Investment Opportunity" },
+          { "value": "general", "text": "General Inquiry" }
+        ]
+      },
+      {
+        "id": "contact-message",
+        "name": "contact-message",
+        "label": "Message",
+        "type": "textarea",
+        "rows": 5,
+        "required": true,
+        "placeholder": "Tell us how you'd like to be involved..."
+      }
+    ],
+    "submitButton": {
+      "text": "Send Message",
+      "class": "btn btn-primary"
+    }
+  }
+}

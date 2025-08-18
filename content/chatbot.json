@@ -1,0 +1,24 @@
+{
+  "title": "DAIO Assistant",
+  "welcomeMessage": "Hello! I'm your DAIO investment assistant. How can I help you today?",
+  "inputPlaceholder": "Type your message...",
+  "quickReplies": [
+    {
+      "text": "ESG Investing",
+      "message": "Tell me about ESG investing"
+    },
+    {
+      "text": "How DAIO Works",
+      "message": "How does DAIO work?"
+    },
+    {
+      "text": "Investment Minimums",
+      "message": "What are the investment minimums?"
+    },
+    {
+      "text": "Contact Support",
+      "message": "Contact support"
+    }
+  ],
+  "triggerText": "Need help?"
+}

@@ -1,0 +1,90 @@
+{
+  "header": {
+    "title": "Main Points of Go-to-Market Strategy",
+    "subtitle": "Strategic approach to market entry and growth"
+  },
+  "left": {
+    "goal": {
+      "title": "Main Goal",
+      "description": "The goal is gain awareness and procure the unsatisfied DIY investors from the investments app with viral growth strategies."
+    },
+    "target": {
+      "title": "Target Audience",
+      "segments": [
+        {
+          "type": "primary",
+          "title": "Primarily TA segments:",
+          "description": "Gen Z and millennial (25-40 y.o) and Gen X (40-50 y.o) DIY investors who lost money or didn't earn as much as desired on competitor investment apps. This audience is identified as most likely to try new investment apps like \"DAIO\" and become early adopters. The target market is the US, specifically cities and suburbs."
+        },
+        {
+          "type": "secondary",
+          "title": "Secondarily:",
+          "description": "25-50 y.o with no experience in investing."
+        }
+      ]
+    },
+    "penetration": {
+      "title": "Early Stage Market Penetration",
+      "description": "Target of 0.5% to 3% of 21 million people (Serviceable Obtainable Market - SOM), which translates to 105,000 to 630,000 people, within 0-3 years."
+    },
+    "timeline": {
+      "title": "Early Market Penetration Timeline",
+      "phases": [
+        {
+          "title": "1. Launch & Initial Adoption (0-6 months):",
+          "activities": "Beta testing, early user acquisition, heavy marketing (referrals, influencers, partnerships).",
+          "goal": "Reach 0.5%-1% penetration."
+        },
+        {
+          "title": "2. Growth & Validation (6-18 months):",
+          "activities": "Scaling user base, refining product-market fit, adjusting pricing, improving UX, handling compliance.",
+          "goal": "Reach 1%-3% penetration."
+        },
+        {
+          "title": "3. Transition to Scaling (18-36 months):",
+          "activities": "Brand awareness increases, organic adoption grows, expansion beyond early adopters.",
+          "goal": "Exceed 3% penetration and move into the scaling phase."
+        }
+      ]
+    },
+    "channels": {
+      "title": "Channels",
+      "breakdown": [
+        { "percentage": "50%", "name": "Social media - owned and borrowed KOLs" },
+        { "percentage": "30%", "name": "OOH (Out-of-Home)" },
+        { "percentage": "20%", "name": "PR + events" }
+      ]
+    }
+  },
+  "right": {
+    "arrProjection": {
+      "title": "ARR Target Projection",
+      "chartId": "arrChart"
+    },
+    "capitalGains": {
+      "title": "+ Capital Gains",
+      "items": [
+        "Portfolio growth (Incl. Voting rights)",
+        "Impact Tokens (Carbon Credits)",
+        "Redwood tokens/shares (COOP Ownership)"
+      ]
+    },
+    "revenueStreams": {
+      "title": "Revenue Streams",
+      "items": [
+        "Standard management fee of .1% (billed monthly)",
+        "Premium monthly subscription $4.99 (15% of users opt for premium services)",
+        "Total Revenue"
+      ]
+    },
+    "assumptions": {
+      "title": "Assumptions",
+      "items": [
+        { "label": "SOM:", "value": "21 Million users" },
+        { "label": "Adoption (Capture) Rates:", "value": "1%, 5%, 10%, 20%" },
+        { "label": "Organic growth in investments:", "value": "5%" },
+        { "label": "Average investment amount:", "value": "$1000" }
+      ]
+    }
+  }
+}

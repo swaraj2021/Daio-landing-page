@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Management System Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background-color: #d1ecf1;
+            border-color: #bee5eb;
+            color: #0c5460;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>DAIO Content Management System Test</h1>
+    
+    <div class="test-section info">
+        <h2>Test Instructions</h2>
+        <p>This page tests the content management system. Click the buttons below to test different aspects:</p>
+    </div>
+
+    <div class="test-section">
+        <h3>Content Loading Test</h3>
+        <button onclick="testContentLoading()">Test Content Loading</button>
+        <div id="loading-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Individual Content Tests</h3>
+        <button onclick="testNavigation()">Test Navigation</button>
+        <button onclick="testHero()">Test Hero</button>
+        <button onclick="testProblem()">Test Problem</button>
+        <button onclick="testSolution()">Test Solution</button>
+        <button onclick="testMarket()">Test Market</button>
+        <button onclick="testProduct()">Test Product</button>
+        <button onclick="testRoadmap()">Test Roadmap</button>
+        <button onclick="testGTM()">Test GTM</button>
+        <button onclick="testMoonshot()">Test Moonshot</button>
+        <button onclick="testContact()">Test Contact</button>
+        <button onclick="testFooter()">Test Footer</button>
+        <button onclick="testChatbot()">Test Chatbot</button>
+        <div id="individual-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>Content Update Test</h3>
+        <button onclick="testContentUpdate()">Test Content Update</button>
+        <div id="update-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h3>System Status</h3>
+        <div id="status-result"></div>
+    </div>
+
+    <script src="content-loader.js"></script>
+    <script>
+        let contentManager;
+
+        // Wait for content manager to initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkContentLoaded = () => {
+                if (window.contentManager) {
+                    contentManager = window.contentManager;
+                    updateStatus();
+                } else {
+                    setTimeout(checkContentLoaded, 100);
+                }
+            };
+            checkContentLoaded();
+        });
+
+        function updateStatus() {
+            const statusDiv = document.getElementById('status-result');
+            if (contentManager && contentManager.loaded) {
+                statusDiv.innerHTML = '<div class="success">✅ Content Management System: LOADED</div>';
+            } else {
+                statusDiv.innerHTML = '<div class="error">❌ Content Management System: NOT LOADED</div>';
+            }
+        }
+
+        function testContentLoading() {
+            const resultDiv = document.getElementById('loading-result');
+            
+            if (!contentManager) {
+                resultDiv.innerHTML = '<div class="error">❌ Content manager not available</div>';
+                return;
+            }
+
+            const sections = Object.keys(contentManager.content);
+            const loadedSections = sections.filter(section => contentManager.content[section] !== null);
+            
+            resultDiv.innerHTML = `
+                <div class="success">
+                    ✅ Content Loading Test Results:<br>
+                    - Total sections: ${sections.length}<br>
+                    - Loaded sections: ${loadedSections.length}<br>
+                    - Failed sections: ${sections.length - loadedSections.length}<br>
+                    <br>
+                    Loaded sections: ${loadedSections.join(', ')}
+                </div>
+            `;
+        }
+
+        function testIndividualContent(sectionName) {
+            const resultDiv = document.getElementById('individual-result');
+            
+            if (!contentManager || !contentManager.content[sectionName]) {
+                resultDiv.innerHTML = `<div class="error">❌ ${sectionName} content not available</div>`;
+                return;
+            }
+
+            const content = contentManager.content[sectionName];
+            resultDiv.innerHTML = `
+                <div class="success">
+                    ✅ ${sectionName} content loaded successfully<br>
+                    <pre>${JSON.stringify(content, null, 2)}</pre>
+                </div>
+            `;
+        }
+
+        function testNavigation() { testIndividualContent('navigation'); }
+        function testHero() { testIndividualContent('hero'); }
+        function testProblem() { testIndividualContent('problem'); }
+        function testSolution() { testIndividualContent('solution'); }
+        function testMarket() { testIndividualContent('market'); }
+        function testProduct() { testIndividualContent('product'); }
+        function testRoadmap() { testIndividualContent('roadmap'); }
+        function testGTM() { testIndividualContent('gtm'); }
+        function testMoonshot() { testIndividualContent('moonshot'); }
+        function testContact() { testIndividualContent('contact'); }
+        function testFooter() { testIndividualContent('footer'); }
+        function testChatbot() { testIndividualContent('chatbot'); }
+
+        function testContentUpdate() {
+            const resultDiv = document.getElementById('update-result');
+            
+            if (!contentManager) {
+                resultDiv.innerHTML = '<div class="error">❌ Content manager not available</div>';
+                return;
+            }
+
+            // Test updating a section
+            contentManager.updateSection('hero').then(() => {
+                resultDiv.innerHTML = '<div class="success">✅ Content update test completed successfully</div>';
+            }).catch(error => {
+                resultDiv.innerHTML = `<div class="error">❌ Content update test failed: ${error.message}</div>`;
+            });
+        }
+    </script>
+</body>
+</html>

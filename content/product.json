@@ -1,0 +1,58 @@
+{
+  "header": {
+    "title": "Product Offer",
+    "subtitle": "We provide an investing service, plus actionable information"
+  },
+  "tiers": [
+    {
+      "type": "free",
+      "title": "Free",
+      "features": [
+        "Asset Allocation, Recommended Portfolio",
+        "No fee is collected for getting client risk tolerance & preference survey and portfolio recommendations"
+      ],
+      "buttons": [
+        {
+          "text": "AA",
+          "class": "btn btn-outline"
+        },
+        {
+          "text": "RP",
+          "class": "btn btn-outline"
+        }
+      ]
+    },
+    {
+      "type": "standard",
+      "title": "Standard",
+      "features": [
+        "Portfolio Implementation & Management",
+        "Insanely cheap management fee (1/2 of ETF), .2%",
+        "Billed monthly and on deposit (for portfolio management, auto rebalancing)"
+      ],
+      "buttons": [
+        {
+          "text": "Portfolio",
+          "icon": "fas fa-chart-pie",
+          "class": "btn btn-primary"
+        }
+      ]
+    },
+    {
+      "type": "premium",
+      "title": "Premium",
+      "features": [
+        "Managed Funds",
+        "(In-House Mission Funds - requiring additional human and computing resources)",
+        "$4.99/mo or AUM-based (TBC)"
+      ],
+      "buttons": [
+        {
+          "text": "Managed Funds",
+          "icon": "fas fa-cube",
+          "class": "cube-icon"
+        }
+      ]
+    }
+  ]
+}

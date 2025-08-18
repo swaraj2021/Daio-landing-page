@@ -1,0 +1,72 @@
+{
+  "header": {
+    "title": "Why Now: An Untapped Market Opportunity",
+    "subtitle": "ESG investing is growing rapidly with strong performance and regulatory support"
+  },
+  "opportunities": [
+    {
+      "title": "ESG Outperformance",
+      "description": "ESG funds often outperform by ~1-2% annually*",
+      "chartId": "esgPerformanceChart",
+      "source": "Source: S&P Dow Jones, Morgan Stanley"
+    },
+    {
+      "title": "ESG Market Growth",
+      "description": "ESG investing will grow 18.8% through 2030 (CAGR)",
+      "chartId": "esgGrowthChart",
+      "source": "Source: Grand View Research"
+    },
+    {
+      "title": "Increasing ESG Regulations",
+      "description": "ESG transparency is driven by government reporting mandates",
+      "chartId": "regulations-map",
+      "source": "Source: Dun & Bradstreet",
+      "regulations": [
+        {
+          "name": "EU Taxonomy",
+          "position": "top: 20%; left: 30%"
+        },
+        {
+          "name": "SFDR",
+          "position": "top: 25%; left: 25%"
+        },
+        {
+          "name": "CSRD",
+          "position": "top: 30%; left: 35%"
+        },
+        {
+          "name": "TCFD",
+          "position": "top: 40%; left: 20%"
+        },
+        {
+          "name": "ISSB",
+          "position": "top: 45%; left: 15%"
+        },
+        {
+          "name": "SEC Climate Disclosure",
+          "position": "top: 35%; left: 10%"
+        },
+        {
+          "name": "GRI",
+          "position": "top: 50%; left: 80%"
+        },
+        {
+          "name": "SASB",
+          "position": "top: 55%; left: 85%"
+        },
+        {
+          "name": "CDP",
+          "position": "top: 60%; left: 90%"
+        },
+        {
+          "name": "UN PRI",
+          "position": "top: 65%; left: 88%"
+        },
+        {
+          "name": "Modern Slavery Act",
+          "position": "top: 70%; left: 85%"
+        }
+      ]
+    }
+  ]
+}

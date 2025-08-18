@@ -1,0 +1,56 @@
+{
+  "header": {
+    "title": "The Problem is Layered, Chronological, and Solvable",
+    "subtitle": "Three interconnected problem areas affecting individual investors globally"
+  },
+  "layers": [
+    {
+      "type": "environment",
+      "title": "Environment",
+      "subtitle": "Environmental Layer",
+      "problem": "Transparency Void",
+      "points": [
+        "Even with access + ownership, there's no visibility",
+        "ESG scores are vague and untrusted",
+        "CO₂ Scope 1-4, lifecycle data mostly invisible",
+        "Zero link between capital & climate outcome"
+      ],
+      "impact": "Financial markets are disconnected from planetary reality.",
+      "supportingData": "$3-5T/year private capital needed to bridge the gap. (Merkel, Kerry, WEF)"
+    },
+    {
+      "type": "social",
+      "title": "Social",
+      "subtitle": "Client Layer",
+      "problem": "Access Barrier",
+      "points": [
+        "Investors with $50-$5,000 are excluded from real financial growth",
+        "No affordable advisor",
+        "No trustworthy, guided experience (clients left to DIY)",
+        "Excluded from capitalism - excluded from impact (but want impact)"
+      ],
+      "impact": "This amplifies generational inequality and wealth lock-out.",
+      "supportingData": "-35% of global retail capital is passive and disempowered. (Bain & Co.)"
+    },
+    {
+      "type": "governance",
+      "title": "Governance",
+      "subtitle": "Institutional Layer",
+      "problem": "Ownership Trap",
+      "points": [
+        "Gaining access still leads to disempowerment",
+        "ETFs strip voting rights",
+        "Advisors charge 5x fees",
+        "DIY/Other Platforms hide incentives (e.g. PFOF)"
+      ],
+      "impact": "Retail investors lose control and agency.",
+      "supportingData": "83% want proxy votes, but can't exercise them. (Stanford)"
+    }
+  ],
+  "summary": {
+    "title": "In an ideal world...",
+    "left": "The things we spend our money on <strong>grow and materialize.</strong>",
+    "right": "The companies we give our money to <strong>construct the reality we inhabit.</strong>",
+    "realityCheck": "But in reality the majority of <strong>individual investors,</strong> (who amount to about <strong>35% of $135T global democratic investment market</strong>) are <strong>deprived</strong> of their choice to vote on activities of companies they invest in."
+  }
+}

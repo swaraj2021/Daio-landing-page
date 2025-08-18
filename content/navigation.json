@@ -1,0 +1,33 @@
+{
+  "brand": "DAIO",
+  "menuItems": [
+    {
+      "text": "Home",
+      "href": "#home"
+    },
+    {
+      "text": "Problem",
+      "href": "#problem"
+    },
+    {
+      "text": "Solution",
+      "href": "#solution"
+    },
+    {
+      "text": "Market",
+      "href": "#market"
+    },
+    {
+      "text": "Product",
+      "href": "#product"
+    },
+    {
+      "text": "Roadmap",
+      "href": "#roadmap"
+    },
+    {
+      "text": "Contact",
+      "href": "#contact"
+    }
+  ]
+}

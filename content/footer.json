@@ -1,0 +1,40 @@
+{
+  "brand": {
+    "name": "DAIO",
+    "tagline": "Investing in the future, one impact at a time."
+  },
+  "socialLinks": [
+    { "platform": "twitter", "icon": "fab fa-twitter", "href": "#" },
+    { "platform": "linkedin", "icon": "fab fa-linkedin", "href": "#" },
+    { "platform": "github", "icon": "fab fa-github", "href": "#" }
+  ],
+  "sections": [
+    {
+      "title": "Quick Links",
+      "links": [
+        { "text": "Home", "href": "#home" },
+        { "text": "Problem", "href": "#problem" },
+        { "text": "Solution", "href": "#solution" },
+        { "text": "Market", "href": "#market" },
+        { "text": "Product", "href": "#product" },
+        { "text": "Roadmap", "href": "#roadmap" }
+      ]
+    },
+    {
+      "title": "Contact",
+      "links": [
+        { "text": "hello@daio.com", "href": "mailto:hello@daio.com" },
+        { "text": "Get in Touch", "href": "#contact" }
+      ]
+    },
+    {
+      "title": "Legal",
+      "links": [
+        { "text": "Privacy Policy", "href": "#" },
+        { "text": "Terms of Service", "href": "#" },
+        { "text": "Patentable Technology", "href": "#" }
+      ]
+    }
+  ],
+  "copyright": "© 2024 DAIO. All rights reserved. Patentable technology."
+}

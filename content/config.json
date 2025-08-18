@@ -1,0 +1,25 @@
+{
+  "site": {
+    "title": "DAIO - Invest with Purpose, Create Real Impact",
+    "brand": "DAIO"
+  },
+  "sections": {
+    "navigation": "content/navigation.json",
+    "hero": "content/hero.json",
+    "problem": "content/problem.json",
+    "solution": "content/solution.json",
+    "market": "content/market.json",
+    "product": "content/product.json",
+    "roadmap": "content/roadmap.json",
+    "gtm": "content/gtm.json",
+    "moonshot": "content/moonshot.json",
+    "contact": "content/contact.json",
+    "footer": "content/footer.json",
+    "chatbot": "content/chatbot.json"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "lastUpdated": "2024-12-19",
+    "description": "Content management system for DAIO website"
+  }
+}

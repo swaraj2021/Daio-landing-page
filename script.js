@@ -1166,8 +1166,30 @@ class DAIOAssistant {
 
 // Initialize chatbot when DOM is loaded
 let daioAssistant;
+
+// Main initialization function that waits for content to load
+function initializeAfterContent() {
+    // Wait for content manager to load before initializing other features
+    const checkContentLoaded = () => {
+        if (window.contentManager && window.contentManager.loaded) {
+            // Initialize all features after content is loaded
+            initCharts();
+            initInteractiveElements();
+            initScrollReveal();
+            initTimeline();
+            initBirdMascot();
+            daioAssistant = new DAIOAssistant();
+            console.log('All features initialized after content load');
+        } else {
+            setTimeout(checkContentLoaded, 100);
+        }
+    };
+    checkContentLoaded();
+}
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
-    daioAssistant = new DAIOAssistant();
+    initializeAfterContent();
 });
 
 // Global functions for external access
