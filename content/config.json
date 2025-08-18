@@ -10,7 +10,6 @@
     "solution": "content/solution.json",
     "market": "content/market.json",
     "product": "content/product.json",
-    "roadmap": "content/roadmap.json",
     "gtm": "content/gtm.json",
     "moonshot": "content/moonshot.json",
     "news": "content/news.json",

@@ -388,45 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Interactive Roadmap
-document.addEventListener('DOMContentLoaded', function() {
-    const roadmapItems = document.querySelectorAll('.stage-item, .funds-item, .resource-item');
-    
-    roadmapItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Toggle active state
-            this.classList.toggle('active');
-            
-            if (this.classList.contains('active')) {
-                this.style.transform = 'scale(1.05)';
-                this.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.15)';
-            } else {
-                this.style.transform = 'scale(1)';
-                this.style.boxShadow = 'none';
-            }
-        });
-    });
-});
 
-// Interactive Team Size
-document.addEventListener('DOMContentLoaded', function() {
-    const sizeItems = document.querySelectorAll('.size-item');
-    
-    sizeItems.forEach(item => {
-        item.addEventListener('click', function() {
-            // Remove active class from all items
-            sizeItems.forEach(s => s.classList.remove('active'));
-            // Add active class to clicked item
-            this.classList.add('active');
-            
-            // Add visual feedback
-            this.style.transform = 'scale(1.1)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 200);
-        });
-    });
-});
 
 // Form handling for contact form
 const contactForm = document.getElementById('contactForm');
@@ -553,7 +515,7 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe elements for animation
 document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.layer, .pillar, .opportunity-card, .tier, .summary-card, .roadmap-container, .gtm-content, .moonshot-content');
+            const animatedElements = document.querySelectorAll('.layer, .pillar, .opportunity-card, .tier, .summary-card, .gtm-content, .moonshot-content');
     
     animatedElements.forEach(el => {
         el.style.opacity = '0';

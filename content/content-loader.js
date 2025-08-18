@@ -71,9 +71,6 @@ class ContentManager {
         // Inject product section
         this.injectProduct();
         
-        // Inject roadmap section
-        this.injectRoadmap();
-        
         // Inject GTM section
         this.injectGTM();
         
@@ -302,74 +299,7 @@ class ContentManager {
         }
     }
 
-    injectRoadmap() {
-        if (!this.content.roadmap) return;
-        
-        const roadmap = this.content.roadmap;
-        
-        // Update header
-        const headerTitle = document.querySelector('#roadmap .section-header h2');
-        const headerSubtitle = document.querySelector('#roadmap .section-header p');
-        
-        if (headerTitle) headerTitle.textContent = roadmap.header.title;
-        if (headerSubtitle) headerSubtitle.textContent = roadmap.header.subtitle;
-        
-        // Update timeline
-        const timelineHeader = document.querySelector('.timeline-header span');
-        if (timelineHeader) timelineHeader.textContent = roadmap.timeline.header;
-        
-        const quartersContainer = document.querySelector('.timeline-quarters');
-        if (quartersContainer) {
-            quartersContainer.innerHTML = roadmap.timeline.quarters.map(q => 
-                `<div class="quarter q${q.period.toLowerCase()}-${q.year}">${q.period}</div>`
-            ).join('');
-        }
-        
-        const markerElement = document.querySelector('.timeline-marker span');
-        if (markerElement) markerElement.textContent = roadmap.timeline.marker;
-        
-        // Update details
-        const detailsContainer = document.querySelector('.roadmap-details');
-        if (detailsContainer) {
-            detailsContainer.innerHTML = roadmap.details.map(detail => {
-                if (detail.type === 'team') {
-                    return `
-                        <div class="detail-row">
-                            <div class="row-header">${detail.header}</div>
-                            <div class="team-size">
-                                ${detail.items.map(item => `
-                                    <div class="size-item ${item.status}">
-                                        <span class="size-number">${item.number}</span>
-                                        <span class="size-label">${item.label}</span>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    return `
-                        <div class="detail-row">
-                            <div class="row-header">${detail.header}</div>
-                            ${detail.items.map(item => `
-                                <div class="${detail.header.toLowerCase().replace(/\s+/g, '-')}-item ${item.status}">${item.text}</div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-            }).join('');
-        }
-        
-        // Update legend
-        const legendContainer = document.querySelector('.legend');
-        if (legendContainer) {
-            legendContainer.innerHTML = roadmap.legend.map(item => `
-                <div class="legend-item">
-                    <span class="legend-color ${item.status}"></span>
-                    <span>${item.label}</span>
-                </div>
-            `).join('');
-        }
-    }
+
 
     injectGTM() {
         if (!this.content.gtm) return;
@@ -732,9 +662,6 @@ class ContentManager {
                     break;
                 case 'product':
                     this.injectProduct();
-                    break;
-                case 'roadmap':
-                    this.injectRoadmap();
                     break;
                 case 'gtm':
                     this.injectGTM();
