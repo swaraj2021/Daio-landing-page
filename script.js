@@ -43,34 +43,70 @@ window.addEventListener('scroll', () => {
 
 // Chart.js Charts
 document.addEventListener('DOMContentLoaded', function() {
-    // Hero Chart
+    // Hero Chart - Asset Growth Dashboard
     const heroCtx = document.getElementById('heroChart');
     if (heroCtx) {
         const heroChart = new Chart(heroCtx, {
             type: 'line',
             data: {
-                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
-                    label: 'Impact Growth',
-                    data: [100, 250, 500, 1000, 2000, 4000],
+                    label: 'Portfolio Value',
+                    data: [1800000, 1850000, 1920000, 1980000, 2050000, 2120000, 2180000, 2250000, 2320000, 2380000, 2420000, 2480000],
                     borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
-                    borderWidth: 3,
+                    backgroundColor: 'rgba(16, 185, 129, 0.15)',
+                    borderWidth: 2,
                     fill: true,
                     tension: 0.4,
                     pointBackgroundColor: '#10b981',
                     pointBorderColor: '#ffffff',
                     pointBorderWidth: 2,
-                    pointRadius: 6,
-                    pointHoverRadius: 8
+                    pointRadius: 4,
+                    pointHoverRadius: 6
+                }, {
+                    label: 'ESG Score',
+                    data: [85, 87, 88, 89, 90, 91, 92, 92.5, 93, 93.5, 94, 94.2],
+                    borderColor: '#059669',
+                    backgroundColor: 'rgba(5, 150, 105, 0.1)',
+                    borderWidth: 2,
+                    fill: false,
+                    tension: 0.4,
+                    pointBackgroundColor: '#059669',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 3,
+                    pointHoverRadius: 5,
+                    yAxisID: 'y1'
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
                     legend: {
                         display: false
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#ffffff',
+                        borderColor: '#10b981',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            label: function(context) {
+                                if (context.datasetIndex === 0) {
+                                    return `Portfolio: €${(context.parsed.y / 1000000).toFixed(1)}M`;
+                                } else {
+                                    return `ESG Score: ${context.parsed.y}`;
+                                }
+                            }
+                        }
                     }
                 },
                 scales: {
@@ -78,12 +114,26 @@ document.addEventListener('DOMContentLoaded', function() {
                         display: false
                     },
                     y: {
-                        display: false
+                        type: 'linear',
+                        display: false,
+                        position: 'left',
+                        min: 1700000,
+                        max: 2500000
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: false,
+                        position: 'right',
+                        min: 80,
+                        max: 100,
+                        grid: {
+                            drawOnChartArea: false,
+                        },
                     }
                 },
                 elements: {
                     point: {
-                        hoverRadius: 8
+                        hoverRadius: 6
                     }
                 },
                 animation: {
@@ -1229,6 +1279,75 @@ function initHeroAnimations() {
             }
         });
     });
+
+    // Animate dashboard metrics
+    const metricValues = document.querySelectorAll('.metric-value');
+    const metricObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const text = target.textContent;
+                
+                if (text.includes('€')) {
+                    // Animate currency values
+                    const value = parseFloat(text.replace(/[€,]/g, ''));
+                    const suffix = text.includes('M') ? 'M' : '';
+                    animateCurrency(target, 0, value, 2000, suffix);
+                } else if (text.includes('.')) {
+                    // Animate decimal values
+                    const value = parseFloat(text);
+                    animateDecimal(target, 0, value, 2000);
+                } else {
+                    // Animate integer values
+                    const value = parseInt(text);
+                    animateNumber(target, 0, value, 2000);
+                }
+                metricObserver.unobserve(target);
+            }
+        });
+    });
+
+    metricValues.forEach(metric => metricObserver.observe(metric));
+}
+
+// Animate currency values
+function animateCurrency(element, start, end, duration, suffix) {
+    const startTime = performance.now();
+    const difference = end - start;
+    
+    function updateCurrency(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = start + (difference * progress);
+        element.textContent = `€${(current / 1000000).toFixed(1)}${suffix}`;
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateCurrency);
+        }
+    }
+    
+    requestAnimationFrame(updateCurrency);
+}
+
+// Animate decimal values
+function animateDecimal(element, start, end, duration) {
+    const startTime = performance.now();
+    const difference = end - start;
+    
+    function updateDecimal(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = start + (difference * progress);
+        element.textContent = current.toFixed(1);
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateDecimal);
+        }
+    }
+    
+    requestAnimationFrame(updateDecimal);
 }
 
 // Animate number counting
@@ -1316,7 +1435,6 @@ function initNews() {
 
 function initNewsFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const newsCards = document.querySelectorAll('.news-card');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -1326,20 +1444,71 @@ function initNewsFilters() {
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             
-            // Filter news cards
-            newsCards.forEach(card => {
-                const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
-                const shouldShow = filter === 'all' || tags.includes(filter.toLowerCase());
-                
-                if (shouldShow) {
-                    card.style.display = 'block';
-                    card.style.animation = 'fadeIn 0.5s ease-in';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+            // Filter articles based on the selected filter
+            filterArticles(filter);
         });
     });
+}
+
+function filterArticles(filter) {
+    // Get all articles
+    let filteredArticles = [];
+    
+    if (window.newsService) {
+        // Use news service articles
+        window.newsService.getNews().then(news => {
+            if (filter === 'all') {
+                filteredArticles = news.articles;
+            } else {
+                filteredArticles = news.articles.filter(article => 
+                    article.tags.some(tag => tag.toLowerCase() === filter.toLowerCase()) ||
+                    article.region.toLowerCase() === filter.toLowerCase() ||
+                    article.category.toLowerCase() === filter.toLowerCase()
+                );
+            }
+            
+            // Update pagination with filtered articles
+            updatePaginationWithArticles(filteredArticles);
+        });
+    } else if (window.contentManager && window.contentManager.content.news) {
+        // Use content manager articles
+        const allArticles = window.contentManager.content.news.articles;
+        if (filter === 'all') {
+            filteredArticles = allArticles;
+        } else {
+            filteredArticles = allArticles.filter(article => 
+                article.tags.some(tag => tag.toLowerCase() === filter.toLowerCase()) ||
+                article.region.toLowerCase() === filter.toLowerCase() ||
+                article.category.toLowerCase() === filter.toLowerCase()
+            );
+        }
+        
+        // Update pagination with filtered articles
+        updatePaginationWithArticles(filteredArticles);
+    }
+}
+
+function updatePaginationWithArticles(articles) {
+    allNewsArticles = articles;
+    currentNewsPage = 1;
+    
+    const totalPages = Math.ceil(allNewsArticles.length / newsPerPage);
+    
+    // Update page numbers
+    const pageNumbersContainer = document.querySelector('.page-numbers');
+    if (pageNumbersContainer) {
+        pageNumbersContainer.innerHTML = '';
+        for (let i = 1; i <= totalPages; i++) {
+            const pageNumber = document.createElement('span');
+            pageNumber.className = `page-number ${i === 1 ? 'active' : ''}`;
+            pageNumber.textContent = i;
+            pageNumber.addEventListener('click', () => goToPage(i));
+            pageNumbersContainer.appendChild(pageNumber);
+        }
+    }
+    
+    // Show first page
+    goToPage(1);
 }
 
 function initNewsModal() {
@@ -1443,39 +1612,145 @@ function closeNewsModal() {
     document.body.style.overflow = '';
 }
 
+// News Pagination System
+let currentNewsPage = 1;
+let newsPerPage = 6;
+let allNewsArticles = [];
+
 function initNewsPagination() {
     const pageNumbers = document.querySelectorAll('.page-number');
     const prevBtn = document.querySelector('.pagination-btn.prev');
     const nextBtn = document.querySelector('.pagination-btn.next');
     
+    // Initialize pagination
+    updatePagination();
+    
     pageNumbers.forEach(number => {
         number.addEventListener('click', () => {
-            pageNumbers.forEach(n => n.classList.remove('active'));
-            number.classList.add('active');
-            
-            // Update pagination buttons
-            const currentPage = parseInt(number.textContent);
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === pageNumbers.length;
+            const pageNum = parseInt(number.textContent);
+            goToPage(pageNum);
         });
     });
     
     prevBtn.addEventListener('click', () => {
-        const activePage = document.querySelector('.page-number.active');
-        const currentPage = parseInt(activePage.textContent);
-        if (currentPage > 1) {
-            pageNumbers[currentPage - 2].click();
+        if (currentNewsPage > 1) {
+            goToPage(currentNewsPage - 1);
         }
     });
     
     nextBtn.addEventListener('click', () => {
-        const activePage = document.querySelector('.page-number.active');
-        const currentPage = parseInt(activePage.textContent);
-        if (currentPage < pageNumbers.length) {
-            pageNumbers[currentPage].click();
+        const totalPages = Math.ceil(allNewsArticles.length / newsPerPage);
+        if (currentNewsPage < totalPages) {
+            goToPage(currentNewsPage + 1);
         }
     });
 }
+
+async function updatePagination() {
+    try {
+        // Get all articles
+        if (window.newsService) {
+            const news = await window.newsService.getNews();
+            allNewsArticles = news.articles;
+        } else if (window.contentManager && window.contentManager.content.news) {
+            allNewsArticles = window.contentManager.content.news.articles;
+        } else {
+            allNewsArticles = [];
+        }
+        
+        const totalPages = Math.ceil(allNewsArticles.length / newsPerPage);
+        
+        // Update page numbers
+        const pageNumbersContainer = document.querySelector('.page-numbers');
+        if (pageNumbersContainer) {
+            pageNumbersContainer.innerHTML = '';
+            for (let i = 1; i <= totalPages; i++) {
+                const pageNumber = document.createElement('span');
+                pageNumber.className = `page-number ${i === 1 ? 'active' : ''}`;
+                pageNumber.textContent = i;
+                pageNumber.addEventListener('click', () => goToPage(i));
+                pageNumbersContainer.appendChild(pageNumber);
+            }
+        }
+        
+        // Show first page
+        goToPage(1);
+        
+    } catch (error) {
+        console.error('Error updating pagination:', error);
+    }
+}
+
+function goToPage(pageNum) {
+    const totalPages = Math.ceil(allNewsArticles.length / newsPerPage);
+    if (pageNum < 1 || pageNum > totalPages) return;
+    
+    currentNewsPage = pageNum;
+    
+    // Update page numbers
+    const pageNumbers = document.querySelectorAll('.page-number');
+    pageNumbers.forEach((num, index) => {
+        if (index + 1 === pageNum) {
+            num.classList.add('active');
+        } else {
+            num.classList.remove('active');
+        }
+    });
+    
+    // Update pagination buttons
+    const prevBtn = document.querySelector('.pagination-btn.prev');
+    const nextBtn = document.querySelector('.pagination-btn.next');
+    
+    prevBtn.disabled = pageNum === 1;
+    nextBtn.disabled = pageNum === totalPages;
+    
+    // Calculate start and end indices
+    const startIndex = (pageNum - 1) * newsPerPage;
+    const endIndex = startIndex + newsPerPage;
+    const pageArticles = allNewsArticles.slice(startIndex, endIndex);
+    
+    // Update news grid
+    const newsGrid = document.querySelector('.news-grid');
+    if (newsGrid) {
+        newsGrid.innerHTML = pageArticles.map(article => `
+            <div class="news-card" data-article-id="${article.id}">
+                <div class="news-card-image">
+                    <img src="${article.image}" alt="${article.title}" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop'">
+                </div>
+                <div class="news-card-content">
+                    <div class="news-card-meta">
+                        <span class="source">${article.source}</span>
+                        <span class="date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
+                    <h5>${article.title}</h5>
+                    <p>${article.excerpt}</p>
+                    <div class="news-card-tags">
+                        ${article.tags.map(tag => `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`).join('')}
+                    </div>
+                    <button class="btn btn-outline read-more">Read More</button>
+                </div>
+            </div>
+        `).join('');
+        
+        // Add fade-in animation
+        const cards = newsGrid.querySelectorAll('.news-card');
+        cards.forEach((card, index) => {
+            card.style.animation = `fadeIn 0.5s ease-in ${index * 0.1}s both`;
+        });
+    }
+    
+    // Scroll to top of news section
+    const newsSection = document.getElementById('news');
+    if (newsSection) {
+        newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+// Make pagination functions globally accessible
+window.updatePagination = updatePagination;
+window.goToPage = goToPage;
+window.filterArticles = filterArticles;
+window.updatePaginationWithArticles = updatePaginationWithArticles;
 
 // Add fadeIn animation
 const style = document.createElement('style');

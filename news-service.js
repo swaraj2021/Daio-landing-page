@@ -362,6 +362,11 @@ class NewsService {
         if (window.initNewsFilters) {
             window.initNewsFilters();
         }
+        
+        // Update pagination if it exists
+        if (window.updatePagination) {
+            window.updatePagination();
+        }
     }
 }
 

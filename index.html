@@ -131,9 +131,51 @@
                     </div>
                     
                     <div class="hero-graphics">
-                        <div class="graphic-chart">
-                            <canvas id="heroChart" width="300" height="200"></canvas>
-                            <div class="chart-label">Impact Growth</div>
+                        <div class="dashboard-container">
+                            <div class="dashboard-header">
+                                <h4>Portfolio Dashboard</h4>
+                                <div class="dashboard-status">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Live</span>
+                                </div>
+                            </div>
+                            
+                            <div class="dashboard-content">
+                                <div class="metric-row">
+                                    <div class="metric">
+                                        <div class="metric-label">Total Assets</div>
+                                        <div class="metric-value">€2.4M</div>
+                                        <div class="metric-change positive">+12.5%</div>
+                                    </div>
+                                    <div class="metric">
+                                        <div class="metric-label">ESG Score</div>
+                                        <div class="metric-value">94.2</div>
+                                        <div class="metric-change positive">+2.1</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="chart-container">
+                                    <canvas id="heroChart" width="300" height="150"></canvas>
+                                </div>
+                                
+                                <div class="asset-breakdown">
+                                    <div class="breakdown-item">
+                                        <div class="breakdown-color" style="background: #10b981;"></div>
+                                        <div class="breakdown-label">Green Bonds</div>
+                                        <div class="breakdown-value">45%</div>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <div class="breakdown-color" style="background: #059669;"></div>
+                                        <div class="breakdown-label">Climate Tech</div>
+                                        <div class="breakdown-value">32%</div>
+                                    </div>
+                                    <div class="breakdown-item">
+                                        <div class="breakdown-color" style="background: #047857;"></div>
+                                        <div class="breakdown-label">ESG Funds</div>
+                                        <div class="breakdown-value">23%</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="graphic-elements">
