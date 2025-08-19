@@ -49,15 +49,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const heroChart = new Chart(heroCtx, {
             type: 'line',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                labels: ['2020', '2021', '2022', '2023', '2024', '2025'],
                 datasets: [{
-                    label: 'Portfolio Growth',
-                    data: [100, 105, 110, 108, 115, 120],
+                    label: 'Impact Growth',
+                    data: [100, 250, 500, 1000, 2000, 4000],
                     borderColor: '#10b981',
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    backgroundColor: 'rgba(16, 185, 129, 0.2)',
                     borderWidth: 3,
                     fill: true,
-                    tension: 0.4
+                    tension: 0.4,
+                    pointBackgroundColor: '#10b981',
+                    pointBorderColor: '#ffffff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8
                 }]
             },
             options: {
@@ -78,8 +83,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 elements: {
                     point: {
-                        radius: 0
+                        hoverRadius: 8
                     }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeInOutQuart'
                 }
             }
         });
@@ -1142,6 +1151,8 @@ function initializeAfterContent() {
             initBirdMascot();
             initNews();
             initAuth();
+            initHeroAnimations();
+            initLazyLoading();
             daioAssistant = new DAIOAssistant();
             console.log('All features initialized after content load');
         } else {
@@ -1149,6 +1160,128 @@ function initializeAfterContent() {
         }
     };
     checkContentLoaded();
+}
+
+// Hero Animations
+function initHeroAnimations() {
+    // Animate floating shapes
+    const shapes = document.querySelectorAll('.shape');
+    shapes.forEach(shape => {
+        const speed = parseFloat(shape.dataset.speed) || 0.5;
+        let y = 0;
+        
+        function animateShape() {
+            y += speed;
+            const x = Math.sin(y * 0.01) * 20;
+            shape.style.transform = `translate(${x}px, ${y}px) rotate(${y * 0.5}deg)`;
+            requestAnimationFrame(animateShape);
+        }
+        animateShape();
+    });
+
+    // Animate particles
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach(particle => {
+        const speed = parseFloat(particle.dataset.speed) || 0.3;
+        let y = Math.random() * window.innerHeight;
+        
+        function animateParticle() {
+            y -= speed;
+            if (y < -10) y = window.innerHeight + 10;
+            particle.style.transform = `translateY(${y}px)`;
+            requestAnimationFrame(animateParticle);
+        }
+        animateParticle();
+    });
+
+    // Animate stats
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = entry.target;
+                const finalValue = parseInt(target.dataset.target);
+                animateNumber(target, 0, finalValue, 2000);
+                observer.unobserve(target);
+            }
+        });
+    });
+
+    statNumbers.forEach(stat => observer.observe(stat));
+
+    // Button ripple effect
+    const buttons = document.querySelectorAll('.btn-primary');
+    buttons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            const ripple = this.querySelector('.btn-ripple');
+            if (ripple) {
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.animation = 'none';
+                ripple.offsetHeight; // Trigger reflow
+                ripple.style.animation = 'ripple 0.6s linear';
+            }
+        });
+    });
+}
+
+// Animate number counting
+function animateNumber(element, start, end, duration) {
+    const startTime = performance.now();
+    const difference = end - start;
+    
+    function updateNumber(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        const current = Math.floor(start + (difference * progress));
+        element.textContent = current.toLocaleString();
+        
+        if (progress < 1) {
+            requestAnimationFrame(updateNumber);
+        }
+    }
+    
+    requestAnimationFrame(updateNumber);
+}
+
+// Lazy Loading Implementation
+function initLazyLoading() {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+
+        lazyImages.forEach(img => {
+            if (img.dataset.src) {
+                img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9IiNmMGYwZjAiLz48L3N2Zz4=';
+                img.classList.add('lazy');
+                imageObserver.observe(img);
+            }
+        });
+    } else {
+        // Fallback for older browsers
+        lazyImages.forEach(img => {
+            if (img.dataset.src) {
+                img.src = img.dataset.src;
+            }
+        });
+    }
 }
 
 // Initialize when DOM is loaded
@@ -1258,37 +1391,50 @@ function initNewsModal() {
     });
 }
 
-function openNewsModal(articleId) {
-    if (!window.contentManager || !window.contentManager.content.news) return;
-    
-    const articles = window.contentManager.content.news.articles;
-    const article = articles.find(a => a.id == articleId);
-    
-    if (!article) return;
-    
-    const modal = document.getElementById('newsModal');
-    const source = modal.querySelector('.source');
-    const date = modal.querySelector('.date');
-    const readTime = modal.querySelector('.read-time');
-    const title = modal.querySelector('.modal-title');
-    const tags = modal.querySelector('.modal-tags');
-    const content = modal.querySelector('.modal-content-text');
-    
-    source.textContent = article.source;
-    date.textContent = new Date(article.date).toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
-    });
-    readTime.textContent = article.readTime;
-    title.textContent = article.title;
-    tags.innerHTML = article.tags.map(tag => 
-        `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`
-    ).join('');
-    content.textContent = article.content;
-    
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+async function openNewsModal(articleId) {
+    try {
+        let articles = [];
+        
+        // Try to get articles from news service first
+        if (window.newsService) {
+            const news = await window.newsService.getNews();
+            articles = news.articles;
+        } else if (window.contentManager && window.contentManager.content.news) {
+            // Fallback to content manager
+            articles = window.contentManager.content.news.articles;
+        }
+        
+        if (!articles.length) return;
+        
+        const article = articles.find(a => a.id == articleId);
+        if (!article) return;
+        
+        const modal = document.getElementById('newsModal');
+        const source = modal.querySelector('.source');
+        const date = modal.querySelector('.date');
+        const readTime = modal.querySelector('.read-time');
+        const title = modal.querySelector('.modal-title');
+        const tags = modal.querySelector('.modal-tags');
+        const content = modal.querySelector('.modal-content-text');
+        
+        source.textContent = article.source;
+        date.textContent = new Date(article.date).toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        readTime.textContent = article.readTime;
+        title.textContent = article.title;
+        tags.innerHTML = article.tags.map(tag => 
+            `<span class="tag ${tag}">${tag.charAt(0).toUpperCase() + tag.slice(1)}</span>`
+        ).join('');
+        content.textContent = article.content;
+        
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    } catch (error) {
+        console.error('Error opening news modal:', error);
+    }
 }
 
 function closeNewsModal() {
