@@ -46,7 +46,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hero Chart - Asset Growth Dashboard
     const heroCtx = document.getElementById('heroChart');
     if (heroCtx) {
-        const heroChart = new Chart(heroCtx, {
+        // Small delay to ensure canvas is ready
+        setTimeout(() => {
+            const heroChart = new Chart(heroCtx, {
             type: 'line',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -142,6 +144,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         });
+        }, 100);
     }
 
     // Portfolio Chart
