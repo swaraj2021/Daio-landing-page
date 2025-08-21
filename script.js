@@ -43,6 +43,18 @@ window.addEventListener('scroll', () => {
 
 // Chart.js Charts
 document.addEventListener('DOMContentLoaded', function() {
+    // Ensure fonts are loaded
+    if ('fonts' in document) {
+        document.fonts.ready.then(() => {
+            console.log('Fonts loaded successfully');
+            document.body.classList.add('fonts-loaded');
+        }).catch(error => {
+            console.warn('Font loading issue:', error);
+            // Fallback to system fonts
+            document.body.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif';
+        });
+    }
+    
     // Hero Chart - Asset Growth Dashboard
     const heroCtx = document.getElementById('heroChart');
     if (heroCtx) {
