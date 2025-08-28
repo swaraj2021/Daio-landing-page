@@ -2,11 +2,28 @@
 let currentUser = null;
 let authToken = localStorage.getItem('daio_auth_token');
 
+// Configuration
+const DAIO_MVP_URL = 'http://localhost:3000';
+
+// Helper function to redirect to daio.mvp
+function redirectToDaioMVP() {
+    // Store authentication data for daio.mvp
+    localStorage.setItem('daio_mvp_auth_token', authToken);
+    localStorage.setItem('daio_mvp_user', JSON.stringify(currentUser));
+    
+    // Redirect to daio.mvp application
+    window.location.href = DAIO_MVP_URL;
+}
+
 // Initialize authentication
 function initAuth() {
     // Check if user is already logged in
     if (authToken) {
         checkAuthStatus();
+        // If user is already authenticated, redirect to daio.mvp
+        setTimeout(() => {
+            redirectToDaioMVP();
+        }, 1000);
     }
     
     // Add event listeners for auth buttons
@@ -170,11 +187,12 @@ async function handleLogin(e) {
             // Update UI
             updateAuthUI();
             
-            // Show success message and close modal
-            showAuthMessage('Login successful!', 'success', 'loginForm');
+            // Show success message and redirect to daio.mvp
+            showAuthMessage('Login successful! Redirecting to DAIO...', 'success', 'loginForm');
             setTimeout(() => {
                 hideLoginModal();
-            }, 1500);
+                redirectToDaioMVP();
+            }, 2000);
             
         } else {
             showAuthMessage(data.error || 'Login failed', 'error', 'loginForm');
@@ -235,11 +253,12 @@ async function handleSignup(e) {
             // Update UI
             updateAuthUI();
             
-            // Show success message and close modal
-            showAuthMessage('Account created successfully!', 'success', 'signupForm');
+            // Show success message and redirect to daio.mvp
+            showAuthMessage('Account created successfully! Redirecting to DAIO...', 'success', 'signupForm');
             setTimeout(() => {
                 hideSignupModal();
-            }, 1500);
+                redirectToDaioMVP();
+            }, 2000);
             
         } else {
             showAuthMessage(data.error || 'Signup failed', 'error', 'signupForm');
