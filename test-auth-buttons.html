@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Auth Buttons - Daio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #007bff;
+            color: #007bff;
+        }
+        .btn-outline:hover {
+            background: #007bff;
+            color: white;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background: #e9ecef;
+        }
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .console {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+        .nav-auth {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🔧 Test Authentication Buttons</h1>
+        
+        <div class="status" id="status">
+            Testing authentication button functionality...
+        </div>
+
+        <h2>Auth Buttons (Same as Landing Page)</h2>
+        <div class="nav-auth">
+            <button class="btn btn-outline" id="loginBtn">Login</button>
+            <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+        </div>
+
+        <h2>Test Results</h2>
+        <div class="console" id="console">
+            Console output will appear here...
+        </div>
+
+        <h2>Manual Tests</h2>
+        <button class="btn btn-primary" onclick="testLoginButton()">Test Login Button</button>
+        <button class="btn btn-primary" onclick="testSignupButton()">Test Signup Button</button>
+        <button class="btn btn-primary" onclick="checkAuthInitialization()">Check Auth Init</button>
+        <button class="btn btn-primary" onclick="clearConsole()">Clear Console</button>
+    </div>
+
+    <!-- Include the same auth.js file -->
+    <script src="auth.js"></script>
+    
+    <script>
+        // Override console.log to capture output
+        const originalLog = console.log;
+        const consoleDiv = document.getElementById('console');
+        
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            const message = args.join(' ');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleDiv.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        };
+
+        function updateStatus(message, type = 'info') {
+            const status = document.getElementById('status');
+            status.textContent = message;
+            status.className = `status ${type}`;
+        }
+
+        function testLoginButton() {
+            console.log('🧪 Testing login button click...');
+            const loginBtn = document.getElementById('loginBtn');
+            if (loginBtn) {
+                loginBtn.click();
+                console.log('✅ Login button clicked');
+            } else {
+                console.log('❌ Login button not found');
+            }
+        }
+
+        function testSignupButton() {
+            console.log('🧪 Testing signup button click...');
+            const signupBtn = document.getElementById('signupBtn');
+            if (signupBtn) {
+                signupBtn.click();
+                console.log('✅ Signup button clicked');
+            } else {
+                console.log('❌ Signup button not found');
+            }
+        }
+
+        function checkAuthInitialization() {
+            console.log('🔍 Checking auth initialization...');
+            console.log('initAuth function exists:', typeof window.initAuth === 'function');
+            console.log('showLoginModal function exists:', typeof window.showLoginModal === 'function');
+            console.log('showSignupModal function exists:', typeof window.showSignupModal === 'function');
+        }
+
+        function clearConsole() {
+            consoleDiv.innerHTML = 'Console cleared...';
+        }
+
+        // Auto-test on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                console.log('🚀 Page loaded, checking auth system...');
+                checkAuthInitialization();
+                updateStatus('Auth system loaded and ready for testing', 'success');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
