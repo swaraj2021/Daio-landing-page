@@ -2,6 +2,14 @@
 
 A comprehensive, interactive website showcasing DAIO's revolutionary ESG-integrated investing platform that aligns capital with purpose.
 
+---
+
+**Copyright © 2024 Swaraj Pal Singh. All rights reserved.**
+
+*This software and associated documentation files (the "Software") are owned and written by Swaraj Pal Singh for the DAIO project. The Software is proprietary and confidential.*
+
+---
+
 ## 🌟 Overview
 
 DAIO offers a guided, end-to-end investing platform that provides institutional-grade strategy, ESG+ integrated intelligence, and real ownership - so your money creates both growth and good.
@@ -150,3 +158,11 @@ Ready to be part of the future of impact investing? Get in touch through the con
 ---
 
 **DAIO** - Investing in the future, one impact at a time. Patentable technology.
+
+---
+
+**Copyright © 2024 Swaraj Pal Singh. All rights reserved.**
+
+*This software and associated documentation files (the "Software") are owned and written by Swaraj Pal Singh for the DAIO project. The Software is proprietary and confidential.*
+
+*For licensing and usage inquiries, please contact Swaraj Pal Singh.*
