@@ -17,8 +17,11 @@ function redirectToDaioMVP() {
 
 // Initialize authentication
 function initAuth() {
+    console.log('🔐 Initializing authentication system...');
+    
     // Check if user is already logged in
     if (authToken) {
+        console.log('✅ User already authenticated, checking status...');
         checkAuthStatus();
         // If user is already authenticated, redirect to daio.mvp
         setTimeout(() => {
@@ -30,8 +33,18 @@ function initAuth() {
     const loginBtn = document.getElementById('loginBtn');
     const signupBtn = document.getElementById('signupBtn');
     
-    if (loginBtn) loginBtn.addEventListener('click', showLoginModal);
-    if (signupBtn) signupBtn.addEventListener('click', showSignupModal);
+    console.log('🔍 Looking for auth buttons...');
+    console.log('Login button found:', !!loginBtn);
+    console.log('Signup button found:', !!signupBtn);
+    
+    if (loginBtn) {
+        loginBtn.addEventListener('click', showLoginModal);
+        console.log('✅ Login button event listener added');
+    }
+    if (signupBtn) {
+        signupBtn.addEventListener('click', showSignupModal);
+        console.log('✅ Signup button event listener added');
+    }
     
     // Add event listeners for modal close buttons
     const loginModalClose = document.getElementById('loginModalClose');
@@ -98,10 +111,14 @@ function initAuth() {
 
 // Show/hide modals
 function showLoginModal() {
+    console.log('🔓 Showing login modal...');
     const modal = document.getElementById('loginModal');
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        console.log('✅ Login modal shown');
+    } else {
+        console.log('❌ Login modal not found!');
     }
 }
 
@@ -115,10 +132,14 @@ function hideLoginModal() {
 }
 
 function showSignupModal() {
+    console.log('🔓 Showing signup modal...');
     const modal = document.getElementById('signupModal');
     if (modal) {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
+        console.log('✅ Signup modal shown');
+    } else {
+        console.log('❌ Signup modal not found!');
     }
 }
 
@@ -388,3 +409,8 @@ window.initAuth = initAuth;
 window.showLoginModal = showLoginModal;
 window.showSignupModal = showSignupModal;
 window.logout = logout;
+
+// Initialize authentication when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initAuth();
+});
